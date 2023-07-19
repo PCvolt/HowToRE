@@ -10,6 +10,8 @@ A same ``var`` can be used for different purposes. A bit troublesome.
 <br>``0x3f000000`` = -1 in floating point
 
 ## How to rename without getting lost
+Hit ``l`` to rename functions, labels, data or variables.
+
 ``u_<nameOfYourGuess>`` for functions, variables or whatever that you aren't sure of. u_ stands for unknown.
 
 Don't try to rename things you are too unsure of.

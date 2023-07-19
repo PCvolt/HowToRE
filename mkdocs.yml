@@ -1,7 +1,7 @@
 site_name: Reverse Engineering | PC_volt
 site_url: https://pc_volt.com/
 nav:
-    
+
     - CheatEngine:
         - CheatEngine: cheatengine/cheatengine.md
     - Ghidra:
@@ -9,6 +9,7 @@ nav:
         - Keybinds: ghidra/keybinds.md
         - Find the Hierarchy: ghidra/hierarchy.md
         - Search for Strings: ghidra/search_for_strings.md
+        - Naming conventions: ghidra/naming_conventions.md
     - C++:
         - C++: cpp/cpp.md
         - vtables: cpp/vtables.md
