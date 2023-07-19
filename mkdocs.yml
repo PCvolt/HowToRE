@@ -1,6 +1,7 @@
 site_name: Reverse Engineering | PC_volt
 site_url: https://pc_volt.com/
 nav:
+    
     - CheatEngine:
         - CheatEngine: cheatengine/cheatengine.md
     - Ghidra:
