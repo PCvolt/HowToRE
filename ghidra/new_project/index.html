@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/hierarchy/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/new_project/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Find the Hierarchy - Reverse Engineering | PC_volt</title>
+    <title>Open a new Project - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Find the Hierarchy";
-        var mkdocs_page_input_path = "ghidra\\hierarchy.md";
-        var mkdocs_page_url = "/ghidra/hierarchy/";
+        var mkdocs_page_name = "Open a new Project";
+        var mkdocs_page_input_path = "ghidra\\new_project.md";
+        var mkdocs_page_url = "/ghidra/new_project/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -51,11 +51,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Find the Hierarchy</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Open a new Project</a>
     <ul class="current">
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../search_for_strings/">Search for Strings</a>
                   </li>
@@ -91,7 +91,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Ghidra &raquo;</li>
-      <li>Find the Hierarchy</li>
+      <li>Open a new Project</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -100,33 +100,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="find-the-hierarchy-of-the-program">Find the hierarchy of the program</h2>
-<p>To understand what does a part of the program , it is never a bad thing to understand what it does globally.</p>
-<p>Indeed, a program will have key sections like:</p>
-<ul>
-<li>the entry point</li>
-<li>the main loop</li>
-<li>inputs handling</li>
-<li>the game logic</li>
-<li>rendering</li>
-</ul>
-<h2 id="the-entry-point">The entry point</h2>
-<p><code>.exe</code> files have a common entry point named <code>entry</code>.</p>
-<p><code>.DLL</code> files will most likely have an <code>init</code> entry point.</p>
-<h2 id="searching-more-locally">Searching more locally</h2>
-<p>Getting the entry point is all good, but not necessarily what you need especially if you are looking for the logic of class methods.</p>
-<p>Click on a function and hit <code>Shift+F</code> and explore which functions call the one you selected. If there is only one result, you're most probably on a good track, else you will have to dig around.</p>
-<p><img alt="" src="../../images/findReferences1.png" /></p>
-<p><img alt="" src="../../images/referencesResult.png" /></p>
-<p><img alt="" src="../../images/vtablePointer.png" /></p>
-<p>Here, it is called by a pointer of a vtable.</p>
-<p>If you are looking for the main logic, then better find another function to start from.</p>
+                <h2 id="new-project">New Project</h2>
+<p>When launching Ghidra, you are faced with a project launcher.</p>
+<ol>
+<li>Create a project directory to hold the project you will work in</li>
+<li>Put a copy of the file you want to examine in this folder</li>
+<li><code>File &gt; New Project...</code> in non-shared, indicate the folder you just created and continue</li>
+<li>Drag&amp;Drop the file onto the launcher where the named folder is</li>
+<li>Double-click the file to open it</li>
+<li>The default parameters should be fine, let Ghidra disassemble/decompile your file for a few minutes*</li>
+<li>You can now start digging</li>
+</ol>
+<p>*Ghidra may complain that there is no PDB. Ignore it. The PDB is the debugging file only present in the Debug mode of the executable/dll/file, or more realistically only to the original developers.
+<br>It contains the names of all functions, variables and anything else, and it's precisely because you are missing this file that you will spend hours finding out what this FUN_006452C2 does.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../new_project/" class="btn btn-neutral float-left" title="Open a new Project"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../search_for_strings/" class="btn btn-neutral float-right" title="Search for Strings">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../keybinds/" class="btn btn-neutral float-left" title="Keybinds"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../hierarchy/" class="btn btn-neutral float-right" title="Find the Hierarchy">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -149,10 +141,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../new_project/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../keybinds/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../search_for_strings/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../hierarchy/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
