@@ -1,0 +1,18 @@
+site_name: Reverse Engineering | PC_volt
+site_url: https://pc_volt.com/
+nav:
+    - CheatEngine:
+        - CheatEngine: cheatengine/cheatengine.md
+    - Ghidra:
+        - Setup: ghidra/ghidra_setup.md
+        - Keybinds: ghidra/keybinds.md
+        - Find the Hierarchy: ghidra/hierarchy.md
+        - Search for Strings: ghidra/search_for_strings.md
+    - C++:
+        - C++: cpp/cpp.md
+        - vtables: cpp/vtables.md
+        - Type Casting: cpp/type_casting.md
+    - Else:
+        - Create a Symbolic Link: else/create_symlink.md 
+
+theme: readthedocs
