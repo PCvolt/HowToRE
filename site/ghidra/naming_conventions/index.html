@@ -51,6 +51,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../search_for_strings/">Search for Strings</a>
@@ -100,15 +102,16 @@
               
                 <h2 id="ghidras-naming-and-how-to-read-them">Ghidra's naming and how to read them</h2>
 <p><code>FUN_&lt;ADDRESS&gt;</code>: Function at &lt;address> 
-<br><code>LAB_&lt;ADDRESS&gt;</code>: Label at &lt;address>, can represent a function.
-<br><code>DAT_&lt;ADDRESS&gt;</code>: Data at &lt;address></p>
+<br><code>DAT_&lt;ADDRESS&gt;</code>: Data at &lt;address>
+<br><code>LAB_&lt;ADDRESS&gt;</code>: Label at &lt;address>, it is a function, struct, data or variable that was not defined by the developer themself.</p>
 <p>A same <code>var</code> can be used for different purposes. A bit troublesome.</p>
 <p><code>0xffffffff</code> = -1 in unsigned
 <br><code>0x3f000000</code> = -1 in floating point</p>
 <h2 id="how-to-rename-without-getting-lost">How to rename without getting lost</h2>
-<p>Hit <code>l</code> to rename functions, labels, data or variables.</p>
+<p>It is all good being able to navigate in the decompiled code and finding strings, but you need to sort this mess in a human-readable way, for yourself and others.</p>
+<p>Hit <code>l</code> to rename functions, labels, data or variables.
+<br>Don't try to rename things you are too unsure of.</p>
 <p><code>u_&lt;nameOfYourGuess&gt;</code> for functions, variables or whatever that you aren't sure of. u_ stands for unknown.</p>
-<p>Don't try to rename things you are too unsure of.</p>
               
             </div>
           </div><footer>

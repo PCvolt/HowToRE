@@ -11,7 +11,7 @@ Indeed, a program will have key sections like:
 
 
 ## The entry point
-``.exe`` files have a common entry point named ``.entry``.
+``.exe`` files have a common entry point named ``entry``.
 
 ``.DLL`` files will most likely have an ``init`` entry point.
 

@@ -7,6 +7,7 @@ nav:
     - Ghidra:
         - Setup: ghidra/ghidra_setup.md
         - Keybinds: ghidra/keybinds.md
+        - Open a new Project: ghidra/new_project.md
         - Find the Hierarchy: ghidra/hierarchy.md
         - Search for Strings: ghidra/search_for_strings.md
         - Naming conventions: ghidra/naming_conventions.md

@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://pc_volt.com/ghidra/new_project/</loc>
+         <lastmod>2023-07-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://pc_volt.com/ghidra/search_for_strings/</loc>
          <lastmod>2023-07-19</lastmod>
          <changefreq>daily</changefreq>
