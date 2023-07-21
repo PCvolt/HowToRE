@@ -97,5 +97,4 @@ int &&ref = ref; // not valid
 ```
 ---
 **Address**:
-<br>References do not have their own memory space, i.e they don't have an address. However they take additional space in the stack.
-Pointers have an address, just like regular variables.
+<br>References do not have their own memory space, i.e they don't have an address unlike pointers.

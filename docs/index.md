@@ -21,5 +21,5 @@ python -m mkdocs build
 git add .
 git commit -m "msg"
 git push
-python -m mkdocs gh-pages
+python -m mkdocs gh-deploy
 ```
