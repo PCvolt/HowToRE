@@ -39,16 +39,15 @@ The offset of the functions may vary, ParentClass' and ChildClass' virtualFuncti
 ![](../images/vtable.png)
 *<p align=center>Even if we call it a table, a vtable is a list of function pointers, hence why the addresses of each function is incremented by 0x4.</p>*
 
-**The first pointer of a vtable ALWAYS points to the destructor!** (write in red)
-<br>Here, at 0x85A3C4.
+**<div style="color: red">The first pointer of a vtable ALWAYS points to the destructor!** That is, if the destructor was defined as virtual.</div> (Here, at 0x85A3C4)
 
-Why?
+Since all child classes inherit the virtual functions, the destructor is always the first function to be so.
+<br>Constructors are not in the vtable however, as they cannot be virtual.
 
-When a class is created, even if the destructor is not explicitly defined (therefore non-virtual and not part of the vtable), the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor (non-virtual, not in vtable)!
-<br>*Constructors are not in the vtable however, as they cannot be virtual.*
+*__Note:__ when a class is created, even if the destructor is not explicitly defined, the compiler generates a default destructor. Therefore all inheriting classes will inherit this destructor.*
+*Still, it is pretty unsafe to not have a virtual destructor when having children classes, because of potential unproper cleanups.*
 
-Note that even if the destructor is defined as non-virtual, it is quite unsafe because of unproper cleanups with the derived classes!
-
+---
 Here, most of the guesswork has already been done, but the functions here are natively named ``FUN_<ADDRESS>``.
 
 When the decompiled code refers to a function in the vtable, it may appear as ``object + 0x<Offset>``.

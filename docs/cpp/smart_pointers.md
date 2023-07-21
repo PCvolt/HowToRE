@@ -17,7 +17,7 @@ Class *obj = new Class(); // allocated in the heap
 When allocated in the stack, the object is destroyed when going out of scope, but is limited to the size of the stack itself (a few Megabytes).
 <br>Stack-allocated objects are typically used when they won't live beyond the scope of the current function.
 ```
-//Class obj(); // allocated in the stack
+Class obj(); // allocated in the stack
 ```
 ---
 ### How Smart Pointers solve these issues
