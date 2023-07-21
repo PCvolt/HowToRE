@@ -12,8 +12,8 @@ nav:
         - Search for Strings: ghidra/search_for_strings.md
         - Naming conventions: ghidra/naming_conventions.md
     - C++:
-        - C++: cpp/cpp.md
         - Pointers and References: cpp/pointers_references.md
+        - Member Initialization List: cpp/initializer_list.md
         - Lambda Functions: cpp/lambdas.md
         - vtables: cpp/vtables.md
         - Type Casting: cpp/type_casting.md

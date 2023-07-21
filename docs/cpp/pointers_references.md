@@ -48,7 +48,7 @@ int main() {
 int a = 0;
 
 int *ptr = &a; // address of a
-int &ref = a; // a is automatically referenced
+int &ref = a; // ref is an alias of a
 ```
 ---
 **Accessing the value and address**:

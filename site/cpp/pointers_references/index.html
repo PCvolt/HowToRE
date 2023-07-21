@@ -62,8 +62,6 @@
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../cpp/">C++</a>
-                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Pointers and References</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
@@ -71,6 +69,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#rules">Rules</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../initializer_list/">Member Initialization List</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
                   </li>
@@ -150,7 +150,7 @@ int main() {
 <pre><code>int a = 0;
 
 int *ptr = &amp;a; // address of a
-int &amp;ref = a; // a is automatically referenced
+int &amp;ref = a; // ref is an alias of a
 </code></pre>
 <hr />
 <p><strong>Accessing the value and address</strong>:</p>
@@ -200,8 +200,8 @@ int &amp;&amp;ref = ref; // not valid
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../cpp/" class="btn btn-neutral float-left" title="C++"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../lambdas/" class="btn btn-neutral float-right" title="Lambda Functions">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../ghidra/naming_conventions/" class="btn btn-neutral float-left" title="Naming conventions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../initializer_list/" class="btn btn-neutral float-right" title="Member Initialization List">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -224,10 +224,10 @@ int &amp;&amp;ref = ref; // not valid
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../cpp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../ghidra/naming_conventions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../lambdas/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../initializer_list/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
