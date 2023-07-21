@@ -7,7 +7,7 @@
 A same ``var`` can be used for different purposes. A bit troublesome.
 
 ``0xffffffff`` = -1 in unsigned
-<br>``0xbf800000`` = 1 in floating point
+<br>``0xbf800000`` = -1 in floating point
 <br>``0x3f800000`` = 1 in floating point
 
 ## How to rename without getting lost
