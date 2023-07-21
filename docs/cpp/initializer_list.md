@@ -18,7 +18,7 @@ class Class
         this->_data = data;
         // other operations
     }
-}
+};
 ```
 
 Initializing directly with the values in the initializer list is faster than the constructor giving a default initialization then assigning the values.
@@ -39,7 +39,7 @@ class Class
     {
         // other operations
     }
-}
+};
 ```
 The members initialized in the list are initialized in the order they are written!
 
@@ -59,7 +59,7 @@ class Class
         _id = id; // not valid
         ref = id; // not valid
     }
-}
+};
 ```
 
 you must do the following:
@@ -71,13 +71,13 @@ class Class
         int &_ref;
     
     public:
-    Class(const int& id) :
+    Class(int& id) :
         _id(id),
         _ref(id)
     {
         //
     }
-}
+};
 
 int main()
 {

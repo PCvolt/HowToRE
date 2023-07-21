@@ -134,7 +134,7 @@
         this-&gt;_data = data;
         // other operations
     }
-}
+};
 </code></pre>
 <p>Initializing directly with the values in the initializer list is faster than the constructor giving a default initialization then assigning the values.
 <br><em>Initializing this-&gt;_data in the constructor function is slower than in the initializer list.</em></p>
@@ -152,7 +152,7 @@
     {
         // other operations
     }
-}
+};
 </code></pre>
 <p>The members initialized in the list are initialized in the order they are written!</p>
 <h3 id="const-members-and-references">Const members and References</h3>
@@ -169,7 +169,7 @@
         _id = id; // not valid
         ref = id; // not valid
     }
-}
+};
 </code></pre>
 <p>you must do the following:</p>
 <pre><code>class Class
@@ -179,13 +179,13 @@
         int &amp;_ref;
 
     public:
-    Class(const int&amp; id) :
+    Class(int&amp; id) :
         _id(id),
         _ref(id)
     {
         //
     }
-}
+};
 
 int main()
 {
