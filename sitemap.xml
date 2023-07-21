@@ -6,6 +6,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://pc_volt.com/ASM/registers/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://pc_volt.com/ASM/stack/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://pc_volt.com/cheatengine/cheatengine/</loc>
          <lastmod>2023-07-21</lastmod>
          <changefreq>daily</changefreq>
@@ -42,6 +52,11 @@
     </url>
     <url>
          <loc>https://pc_volt.com/else/create_symlink/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://pc_volt.com/ghidra/calling_conventions/</loc>
          <lastmod>2023-07-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
