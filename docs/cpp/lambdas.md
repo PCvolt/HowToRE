@@ -53,6 +53,6 @@ void function()
         a = a * b + number;
     };
 
-    computeValueA(4) // a is now equel to 1 * 2 + 4 = 6
+    computeValueA(4) // a is now equal to 1 * 2 + 4 = 6
 }
 ```

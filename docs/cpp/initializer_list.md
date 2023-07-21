@@ -7,7 +7,7 @@ Member Initializer List is a mechanism for initializing the members of a class d
 class Class
 {
     private: 
-        // _ is here to signify it is private
+        // _ is here to indicate a member is private
         std::string _id;
         std::string _data; 
     
@@ -89,7 +89,3 @@ int main()
     // _id is const and does not change (_id = 20)
 }
 ```
-
-### Foot note
-``Class obj(x);`` is created on the stack. It will be destroyed when it goes out of scope. Usually the preferred approach.
-<br>``Class *obj = new Class(x);`` is created on the heap and must be manually destroyed with ``delete``. Classes created in the heap can take a much larger place than in the stack, but is slower because of memory (de)allocation overhead.

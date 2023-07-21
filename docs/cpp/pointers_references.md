@@ -73,7 +73,8 @@ int &ref;
 ```
 ---
 **Reassignation**:
-<br>A reference cannot be reassigned, a pointer can be.
+<br>A reference cannot be reassigned after initialization.
+<br>A pointer can be reassigned as many times as you need.
 ```
 int a;
 int b;

@@ -49,9 +49,9 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
@@ -73,6 +73,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../initializer_list/">Member Initialization List</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../smart_pointers/">Smart Pointers</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vtables/">vtables</a>
                   </li>
@@ -173,7 +175,8 @@ int &amp;ref;
 </code></pre>
 <hr />
 <p><strong>Reassignation</strong>:
-<br>A reference cannot be reassigned, a pointer can be.</p>
+<br>A reference cannot be reassigned after initialization.
+<br>A pointer can be reassigned as many times as you need.</p>
 <pre><code>int a;
 int b;
 
