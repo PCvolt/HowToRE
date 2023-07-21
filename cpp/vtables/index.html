@@ -159,12 +159,12 @@ class ChildClass : ParentClass
 <br><em>ParentClass vtable's pointers to destructor() and virtualFunction() are different from the ones in ChildClass' vtable.</em></p>
 <p><img alt="" src="../../images/vtable.png" />
 <em><p align=center>Even if we call it a table, a vtable is a list of function pointers, hence why the addresses of each function is incremented by 0x4.</p></em></p>
-<p><strong>The first pointer of a vtable ALWAYS points to the destructor!</strong> (write in red)
-<br>Here, at 0x85A3C4.</p>
-<p>Why?</p>
-<p>When a class is created, even if the destructor is not explicitly defined (therefore non-virtual and not part of the vtable), the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor (non-virtual, not in vtable)!
-<br><em>Constructors are not in the vtable however, as they cannot be virtual.</em></p>
-<p>Note that even if the destructor is defined as non-virtual, it is quite unsafe because of unproper cleanups with the derived classes!</p>
+<p><strong><div style="color: red">The first pointer of a vtable ALWAYS points to the destructor!</strong> That is, if the destructor was defined as virtual.</div> (Here, at 0x85A3C4)</p>
+<p>Since all child classes inherit the virtual functions, the destructor is always the first function to be so.
+<br>Constructors are not in the vtable however, as they cannot be virtual.</p>
+<p><em><strong>Note:</strong> when a class is created, even if the destructor is not explicitly defined, the compiler generates a default destructor. Therefore all inheriting classes will inherit this destructor.</em>
+<em>Still, it is pretty unsafe to not have a virtual destructor when having children classes, because of potential unproper cleanups.</em></p>
+<hr />
 <p>Here, most of the guesswork has already been done, but the functions here are natively named <code>FUN_&lt;ADDRESS&gt;</code>.</p>
 <p>When the decompiled code refers to a function in the vtable, it may appear as <code>object + 0x&lt;Offset&gt;</code>.</p>
               
