@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/search_for_strings/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/lambda/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search for Strings - Reverse Engineering | PC_volt</title>
+    <title>Lambda - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Search for Strings";
-        var mkdocs_page_input_path = "ghidra\\search_for_strings.md";
-        var mkdocs_page_url = "/ghidra/search_for_strings/";
+        var mkdocs_page_name = "Lambda";
+        var mkdocs_page_input_path = "cpp\\lambda.md";
+        var mkdocs_page_url = "/cpp/lambda/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -46,33 +46,31 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Ghidra</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../ghidra_setup/">Setup</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Search for Strings</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/search_for_strings/">Search for Strings</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../naming_conventions/">Naming conventions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/naming_conventions/">Naming conventions</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp/">C++</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../cpp/">C++</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/pointers_references/">Pointers and References</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../cpp/lambdas.md">Lambda Functions</a>
+                  <li class="toctree-l1"><a class="" href="../lambdas.md">Lambda Functions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/vtables/">vtables</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../vtables/">vtables</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/type_casting/">Type Casting</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../type_casting/">Type Casting</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
@@ -94,8 +92,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Ghidra &raquo;</li>
-      <li>Search for Strings</li>
+      <li>Lambda</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -104,20 +101,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="search-for-string">Search for String</h2>
-<p>One of the fastest and easiest approach when digging through decompiled code is to look for strings. <code>Search &gt; For Strings...</code> with the default parameters should be fine.</p>
-<p>The strength of this method of approach is that it is really efficient when inspecting code that is very susceptible to have debug functions in it, such as console messages (<code>std::cout</code> and the likes).
-<br>
-Though, you will have to ignore the very many system strings present in the results...</p>
-<p><img alt="" src="../../images/searchForStrings.png" /></p>
-<p>However, this method can be unreliable for games as their Release version may not contain any trace of debug logging. Still, a very quick and efficient way to easily guess portions of code.</p>
+                <h2 id="lambda-functions">Lambda Functions</h2>
+<p>Lambda functions are used for functions that only have a use locally within the function you working in.</p>
+<pre><code>auto lambda = [captures](parameters)
+{
+    // content
+};
+</code></pre>
+<p>The <code>captures</code> refers to the variables present in the enclosing scope. That is:</p>
+<pre><code>void function()
+{
+    int b = 2;
+    auto funcionLambda = [&amp;]()
+    {
+        std::cout &lt;&lt; b &lt;&lt; std::endl; // can only access b
+    };
+}
+
+
+int main()
+{
+    int a = 1;
+
+    auto mainLambda = [&amp;]()
+    {
+        std::cout &lt;&lt; a &lt;&lt; std::endl; // can only access a
+    };
+
+    function();
+}
+</code></pre>
+<p><br><code>[&amp;]</code> will capture every variable in the scope by reference.<br>To access a by reference, write <code>[&amp;a]</code>.</p>
+<p><code>[=]</code> will capture every variable in the scope by value.
+<br>To access the value of the variable a, write <code>[a]</code>.</p>
+<p>Example:</p>
+<pre><code>void function()
+{
+    int a = 1;
+    int b = 2;
+    int c = 3;
+
+    auto computeValueA = [&amp;a, b](int number)
+    {
+        // a is captured by reference, and b by value
+        // c is not captured
+        a = a * b + number;
+    };
+
+    computeValueA(4) // a is now equel to 1 * 2 + 4 = 6
+}
+</code></pre>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../hierarchy/" class="btn btn-neutral float-left" title="Find the Hierarchy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../naming_conventions/" class="btn btn-neutral float-right" title="Naming conventions">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -139,10 +175,6 @@ Though, you will have to ignore the very many system strings present in the resu
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../hierarchy/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../naming_conventions/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
