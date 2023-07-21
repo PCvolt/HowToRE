@@ -14,6 +14,7 @@ nav:
     - C++:
         - C++: cpp/cpp.md
         - Pointers and References: cpp/pointers_references.md
+        - Lambda Functions: cpp/lambdas.md
         - vtables: cpp/vtables.md
         - Type Casting: cpp/type_casting.md
     - Else:

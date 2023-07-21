@@ -1,6 +1,6 @@
 ## Pointers and References
 A reference is an **alias** of a variable, while a pointer is **a variable holding the address of another variable**.
-<br>To be more exact, a reference is still treated as a pointer by the compiler, that automatically dereferences itself when used, but is much less versatile (but safer!).
+<br>To be more exact, a reference is still treated as a pointer by the compiler, that automatically dereferences itself when used, is less versatile than a pointer but safer on its uses cases.
 
 
 ### Usage
