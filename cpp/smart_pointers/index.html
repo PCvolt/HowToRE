@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/type_casting/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/smart_pointers/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Type Casting - Reverse Engineering | PC_volt</title>
+    <title>Smart Pointers - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Type Casting";
-        var mkdocs_page_input_path = "cpp\\type_casting.md";
-        var mkdocs_page_url = "/cpp/type_casting/";
+        var mkdocs_page_name = "Smart Pointers";
+        var mkdocs_page_input_path = "cpp\\smart_pointers.md";
+        var mkdocs_page_url = "/cpp/smart_pointers/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -68,13 +68,23 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../smart_pointers/">Smart Pointers</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Smart Pointers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#common-problems-with-raw-pointers">Common problems with raw pointers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-smart-pointers-solve-these-issues">How Smart Pointers solve these issues</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stdunique_ptr-deprecates-auto_ptr">std::unique_ptr (deprecates auto_ptr)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stdshared_ptr">std::shared_ptr</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stdweak_ptr">std::weak_ptr</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vtables/">vtables</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Type Casting</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../type_casting/">Type Casting</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
@@ -97,7 +107,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>C++ &raquo;</li>
-      <li>Type Casting</li>
+      <li>Smart Pointers</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -106,16 +116,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="why-casting-is-needed">Why casting is needed</h2>
-<h2 id="static_cast-reinterpret_cast">static_cast, reinterpret_cast, ...</h2>
-<p><code>reinterpret_cast</code> technically is the most unsafe one, but is the one we will mostly use since we are already messing with the memory and trying to forcefully cast values.</p>
-<p><a href="https://stackoverflow.com/a/332086">StackOverflow: When should static_cast, dynamic_cast, const_cast, and reinterpret_cast be used?</a></p>
+                <h2 id="smart-pointers-c11">Smart Pointers (C++11)</h2>
+<p>We will focus on <strong>heap-allocated objects</strong>.</p>
+<h3 id="common-problems-with-raw-pointers">Common problems with raw pointers</h3>
+<p>Raw pointers do not go out of scope, therefore are not destroyed automatically, this causes:
+- Memory leaks: the user forgets to <code>delete</code> and the memory can overflow
+- Dangling pointers: a pointer points to an address that has been deallocated
+- Wild pointers: a pointer may have not been initialized to point to a valid address or object</p>
+<p><em><code>delete</code> calls the destructor of the object first then deallocate the memory the pointer was pointing to</em></p>
+<p>When allocated in the heap, the object can take as much memory as the OS can provide, and must be manually <code>deleted</code>.</p>
+<pre><code>Class *obj = new Class(); // allocated in the heap
+</code></pre>
+<p>When allocated in the stack, the object is destroyed when going out of scope, but is limited to the size of the stack itself (a few Megabytes).
+<br>Stack-allocated objects are typically used when they won't live beyond the scope of the current function.</p>
+<pre><code>//Class obj(); // allocated in the stack
+</code></pre>
+<hr />
+<h3 id="how-smart-pointers-solve-these-issues">How Smart Pointers solve these issues</h3>
+<p><em>Include <code>#include &lt;memory&gt;</code> to use smart pointers.</em></p>
+<p>Smart pointers are pointers that are self-managed, that is to say they will <code>delete</code> when:
+- they go out of scope
+- they call <code>reset()</code></p>
+<p>However, smart pointers are mostly used with heap-allocated objects as the stack has its own rules of ownership and deallocation.</p>
+<hr />
+<h3 id="stdunique_ptr-deprecates-auto_ptr">std::unique_ptr (deprecates auto_ptr)</h3>
+<p>A <code>unique_ptr</code>  has exclusive ownership of a dynamically allocated object.
+<br>If another pointer tries to copy or assign itself to the object, the compiler will raise an error.
+<br>Has less overhead than shared_ptr and usually more efficient.</p>
+<pre><code>auto obj = std::make_unique&lt;Class&gt;();
+</code></pre>
+<h3 id="stdshared_ptr">std::shared_ptr</h3>
+<p>A <code>shared_ptr</code> allows multiple smart pointers to share the ownership of the object, and keeps track of how many smart pointers are pointing towards the object with <code>use_count()</code>.</p>
+<pre><code>auto sharedPtr = std::make_shared&lt;Class&gt;();
+</code></pre>
+<h3 id="stdweak_ptr">std::weak_ptr</h3>
+<p>Typically used to break circular dependency of shared pointers. Otherwise not very common.</p>
+<pre><code>auto obj = std::make_weak&lt;Class&gt;();
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../vtables/" class="btn btn-neutral float-left" title="vtables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../else/create_symlink/" class="btn btn-neutral float-right" title="Create a Symbolic Link">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../lambdas/" class="btn btn-neutral float-left" title="Lambda Functions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vtables/" class="btn btn-neutral float-right" title="vtables">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -138,10 +181,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../vtables/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../lambdas/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../else/create_symlink/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../vtables/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

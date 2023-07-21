@@ -49,9 +49,9 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
@@ -70,11 +70,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#const-members-and-references">Const members and References</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#foot-note">Foot note</a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../smart_pointers/">Smart Pointers</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vtables/">vtables</a>
                   </li>
@@ -116,7 +116,7 @@
 <pre><code>class Class
 {
     private: 
-        // _ is here to signify it is private
+        // _ is here to indicate a member is private
         std::string _id;
         std::string _data; 
 
@@ -190,9 +190,6 @@ int main()
     // _id is const and does not change (_id = 20)
 }
 </code></pre>
-<h3 id="foot-note">Foot note</h3>
-<p><code>Class obj(x);</code> is created on the stack. It will be destroyed when it goes out of scope. Usually the preferred approach.
-<br><code>Class *obj = new Class(x);</code> is created on the heap and must be manually destroyed with <code>delete</code>. Classes created in the heap can take a much larger place than in the stack, but is slower because of memory (de)allocation overhead.</p>
               
             </div>
           </div><footer>

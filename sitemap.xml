@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://pc_volt.com/cpp/smart_pointers/</loc>
+         <lastmod>2023-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://pc_volt.com/cpp/type_casting/</loc>
          <lastmod>2023-07-21</lastmod>
          <changefreq>daily</changefreq>
