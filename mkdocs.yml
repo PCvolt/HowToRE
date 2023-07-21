@@ -18,6 +18,9 @@ nav:
         - Smart Pointers: cpp/smart_pointers.md
         - vtables: cpp/vtables.md
         - Type Casting: cpp/type_casting.md
+    - ASM:
+        - Registers: ASM/registers.md
+        - Stack: ASM/stack.md
     - Else:
         - Create a Symbolic Link: else/create_symlink.md 
 

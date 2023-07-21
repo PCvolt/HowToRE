@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/type_casting/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ASM/stack/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Type Casting - Reverse Engineering | PC_volt</title>
+    <title>Stack - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Type Casting";
-        var mkdocs_page_input_path = "cpp\\type_casting.md";
-        var mkdocs_page_url = "/cpp/type_casting/";
+        var mkdocs_page_name = "Stack";
+        var mkdocs_page_input_path = "ASM\\stack.md";
+        var mkdocs_page_url = "/ASM/stack/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -61,27 +61,25 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/pointers_references/">Pointers and References</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../initializer_list/">Member Initialization List</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/initializer_list/">Member Initialization List</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/lambdas/">Lambda Functions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../smart_pointers/">Smart Pointers</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/smart_pointers/">Smart Pointers</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../vtables/">vtables</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/vtables/">vtables</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Type Casting</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cpp/type_casting/">Type Casting</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">ASM</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/registers/">Registers</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../registers/">Registers</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/stack/">Stack</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Stack</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
@@ -103,8 +101,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>C++ &raquo;</li>
-      <li>Type Casting</li>
+          <li>ASM &raquo;</li>
+      <li>Stack</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -113,16 +111,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="why-casting-is-needed">Why casting is needed</h2>
-<h2 id="static_cast-reinterpret_cast">static_cast, reinterpret_cast, ...</h2>
-<p><code>reinterpret_cast</code> technically is the most unsafe one, but is the one we will mostly use since we are already messing with the memory and trying to forcefully cast values.</p>
-<p><a href="https://stackoverflow.com/a/332086">StackOverflow: When should static_cast, dynamic_cast, const_cast, and reinterpret_cast be used?</a></p>
+                
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../vtables/" class="btn btn-neutral float-left" title="vtables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../ASM/registers/" class="btn btn-neutral float-right" title="Registers">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../registers/" class="btn btn-neutral float-left" title="Registers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../else/create_symlink/" class="btn btn-neutral float-right" title="Create a Symbolic Link">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -145,10 +140,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../vtables/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../registers/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../ASM/registers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../else/create_symlink/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
