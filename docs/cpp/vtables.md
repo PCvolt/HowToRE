@@ -44,10 +44,10 @@ The offset of the functions may vary, ParentClass' and ChildClass' virtualFuncti
 
 Why?
 
-When a class is created, even if the destructor is not explicitly defined, the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor!
+When a class is created, even if the destructor is not explicitly defined (therefore non-virtual and not part of the vtable), the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor (non-virtual, not in vtable)!
 <br>*Constructors are not in the vtable however, as they cannot be virtual.*
 
-Note: the destructor may be non-virtual (therefore not part of the vtable), but that is quite unsafe when dealing with derived classes because of unproper cleanups!
+Note that even if the destructor is defined as non-virtual, it is quite unsafe because of unproper cleanups with the derived classes!
 
 Here, most of the guesswork has already been done, but the functions here are natively named ``FUN_<ADDRESS>``.
 

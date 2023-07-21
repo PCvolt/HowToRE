@@ -13,6 +13,7 @@ nav:
         - Naming conventions: ghidra/naming_conventions.md
     - C++:
         - C++: cpp/cpp.md
+        - Pointers and References: cpp/pointers_references.md
         - vtables: cpp/vtables.md
         - Type Casting: cpp/type_casting.md
     - Else:
