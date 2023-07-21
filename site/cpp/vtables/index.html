@@ -64,6 +64,8 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../cpp/">C++</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
+                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">vtables</a>
     <ul class="current">
     </ul>
@@ -156,16 +158,16 @@ class ChildClass : ParentClass
 <p><strong>The first pointer of a vtable ALWAYS points to the destructor!</strong> (write in red)
 <br>Here, at 0x85A3C4.</p>
 <p>Why?</p>
-<p>When a class is created, even if the destructor is not explicitly defined, the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor!
+<p>When a class is created, even if the destructor is not explicitly defined (therefore non-virtual and not part of the vtable), the compiler generates a default destructor. That is, all inheriting classes will inherit this destructor (non-virtual, not in vtable)!
 <br><em>Constructors are not in the vtable however, as they cannot be virtual.</em></p>
-<p>Note: the destructor may be non-virtual (therefore not part of the vtable), but that is quite unsafe when dealing with derived classes because of unproper cleanups!</p>
+<p>Note that even if the destructor is defined as non-virtual, it is quite unsafe because of unproper cleanups with the derived classes!</p>
 <p>Here, most of the guesswork has already been done, but the functions here are natively named <code>FUN_&lt;ADDRESS&gt;</code>.</p>
 <p>When the decompiled code refers to a function in the vtable, it may appear as <code>object + 0x&lt;Offset&gt;</code>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../cpp/" class="btn btn-neutral float-left" title="C++"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pointers_references/" class="btn btn-neutral float-left" title="Pointers and References"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../type_casting/" class="btn btn-neutral float-right" title="Type Casting">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -189,7 +191,7 @@ class ChildClass : ParentClass
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../cpp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../pointers_references/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../type_casting/" style="color: #fcfcfc">Next &raquo;</a></span>
