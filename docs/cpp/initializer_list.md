@@ -54,7 +54,7 @@ class Class
         int &_ref;
     
     public:
-    Class(const int& id)
+    Class(int& id)
     {
         _id = id; // not valid
         ref = id; // not valid

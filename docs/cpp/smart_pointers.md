@@ -3,6 +3,7 @@ We will focus on **heap-allocated objects**.
 
 ### Common problems with raw pointers
 Raw pointers do not go out of scope, therefore are not destroyed automatically, this causes:
+
 - Memory leaks: the user forgets to ``delete`` and the memory can overflow
 - Dangling pointers: a pointer points to an address that has been deallocated
 - Wild pointers: a pointer may have not been initialized to point to a valid address or object
@@ -24,6 +25,7 @@ Class obj(); // allocated in the stack
 *Include ``#include <memory>`` to use smart pointers.*
 
 Smart pointers are pointers that are self-managed, that is to say they will ``delete`` when:
+
 - they go out of scope
 - they call ``reset()``
 
@@ -43,7 +45,7 @@ auto obj = std::make_unique<Class>();
 A ``shared_ptr`` allows multiple smart pointers to share the ownership of the object, and keeps track of how many smart pointers are pointing towards the object with ``use_count()``.
 
 ```
-auto sharedPtr = std::make_shared<Class>();
+auto obj = std::make_shared<Class>();
 ```
 
 ### std::weak_ptr

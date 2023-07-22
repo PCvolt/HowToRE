@@ -126,10 +126,12 @@
                 <h2 id="smart-pointers-c11">Smart Pointers (C++11)</h2>
 <p>We will focus on <strong>heap-allocated objects</strong>.</p>
 <h3 id="common-problems-with-raw-pointers">Common problems with raw pointers</h3>
-<p>Raw pointers do not go out of scope, therefore are not destroyed automatically, this causes:
-- Memory leaks: the user forgets to <code>delete</code> and the memory can overflow
-- Dangling pointers: a pointer points to an address that has been deallocated
-- Wild pointers: a pointer may have not been initialized to point to a valid address or object</p>
+<p>Raw pointers do not go out of scope, therefore are not destroyed automatically, this causes:</p>
+<ul>
+<li>Memory leaks: the user forgets to <code>delete</code> and the memory can overflow</li>
+<li>Dangling pointers: a pointer points to an address that has been deallocated</li>
+<li>Wild pointers: a pointer may have not been initialized to point to a valid address or object</li>
+</ul>
 <p><em><code>delete</code> calls the destructor of the object first then deallocate the memory the pointer was pointing to</em></p>
 <p>When allocated in the heap, the object can take as much memory as the OS can provide, and must be manually <code>deleted</code>.</p>
 <pre><code>Class *obj = new Class(); // allocated in the heap
@@ -141,9 +143,11 @@
 <hr />
 <h3 id="how-smart-pointers-solve-these-issues">How Smart Pointers solve these issues</h3>
 <p><em>Include <code>#include &lt;memory&gt;</code> to use smart pointers.</em></p>
-<p>Smart pointers are pointers that are self-managed, that is to say they will <code>delete</code> when:
-- they go out of scope
-- they call <code>reset()</code></p>
+<p>Smart pointers are pointers that are self-managed, that is to say they will <code>delete</code> when:</p>
+<ul>
+<li>they go out of scope</li>
+<li>they call <code>reset()</code></li>
+</ul>
 <p>However, smart pointers are mostly used with heap-allocated objects as the stack has its own rules of ownership and deallocation.</p>
 <hr />
 <h3 id="stdunique_ptr-deprecates-auto_ptr">std::unique_ptr (deprecates auto_ptr)</h3>
@@ -154,7 +158,7 @@
 </code></pre>
 <h3 id="stdshared_ptr">std::shared_ptr</h3>
 <p>A <code>shared_ptr</code> allows multiple smart pointers to share the ownership of the object, and keeps track of how many smart pointers are pointing towards the object with <code>use_count()</code>.</p>
-<pre><code>auto sharedPtr = std::make_shared&lt;Class&gt;();
+<pre><code>auto obj = std::make_shared&lt;Class&gt;();
 </code></pre>
 <h3 id="stdweak_ptr">std::weak_ptr</h3>
 <p>Typically used to break circular dependency of shared pointers. Otherwise not very common.</p>

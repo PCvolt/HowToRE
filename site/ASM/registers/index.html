@@ -114,12 +114,23 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="registers">Registers</h2>
+<p>A common depiction of the registers is as follow:
+| Register | Usage                           |
+| -------- | ------------------------------- |
+| EAX      | General purposes / return value |
+| EBX      | General purposes                |
+| ECX      | General purposes                |
+| EDX      | General purposes                |
+| ESI      | General purposes                |
+| EDI      | General purposes                |
+| ESP      | Stack Pointer                   |
+| EBP      | Base Pointer                    |</p>
 <ul>
-<li><code>EAX</code> is commonly used to store the <strong>return value</strong> (very important!)</li>
+<li><code>EAX</code> is a general-purpose register, but is commonly used to store the <strong>return value</strong> of a function</li>
 <li><code>EBX</code> to <code>EDI</code> are general-purposes registers</li>
 <li><code>ESP</code> is the <strong>Stack Pointer</strong>, it points to the top of the stack</li>
 <li><code>EBP</code> is the <strong>Base Pointer</strong>, it is set at <code>ESP</code> at the beginning of a function (beginning of a stack frame)</li>
-<li><code>EIP</code> is the <strong>Instruction Pointer</strong>, which points to the next instruction to execute in the code</li>
+<li><code>EIP</code> is the <strong>Instruction Pointer</strong>, it is a special register which points to the next instruction to execute in the code, useful to look at when using CheatEngine</li>
 </ul>
               
             </div>
