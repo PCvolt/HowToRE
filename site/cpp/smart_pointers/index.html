@@ -62,6 +62,8 @@
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../static/">Static</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../initializer_list/">Member Initialization List</a>
@@ -134,11 +136,11 @@
 </ul>
 <p><em><code>delete</code> calls the destructor of the object first then deallocate the memory the pointer was pointing to</em></p>
 <p>When allocated in the heap, the object can take as much memory as the OS can provide, and must be manually <code>deleted</code>.</p>
-<pre><code>Class *obj = new Class(); // allocated in the heap
+<pre><code class="language-c++">Class *obj = new Class(); // allocated in the heap
 </code></pre>
 <p>When allocated in the stack, the object is destroyed when going out of scope, but is limited to the size of the stack itself (a few Megabytes).
 <br>Stack-allocated objects are typically used when they won't live beyond the scope of the current function.</p>
-<pre><code>Class obj(); // allocated in the stack
+<pre><code class="language-c++">Class obj(); // allocated in the stack
 </code></pre>
 <hr />
 <h3 id="how-smart-pointers-solve-these-issues">How Smart Pointers solve these issues</h3>
@@ -154,15 +156,15 @@
 <p>A <code>unique_ptr</code>  has exclusive ownership of a dynamically allocated object.
 <br>If another pointer tries to copy or assign itself to the object, the compiler will raise an error.
 <br>Has less overhead than shared_ptr and usually more efficient.</p>
-<pre><code>auto obj = std::make_unique&lt;Class&gt;();
+<pre><code class="language-c++">auto obj = std::make_unique&lt;Class&gt;();
 </code></pre>
 <h3 id="stdshared_ptr">std::shared_ptr</h3>
 <p>A <code>shared_ptr</code> allows multiple smart pointers to share the ownership of the object, and keeps track of how many smart pointers are pointing towards the object with <code>use_count()</code>.</p>
-<pre><code>auto obj = std::make_shared&lt;Class&gt;();
+<pre><code class="language-c++">auto obj = std::make_shared&lt;Class&gt;();
 </code></pre>
 <h3 id="stdweak_ptr">std::weak_ptr</h3>
 <p>Typically used to break circular dependency of shared pointers. Otherwise not very common.</p>
-<pre><code>auto obj = std::make_weak&lt;Class&gt;();
+<pre><code class="language-c++">auto obj = std::make_weak&lt;Class&gt;();
 </code></pre>
               
             </div>

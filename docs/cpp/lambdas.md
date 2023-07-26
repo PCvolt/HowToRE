@@ -1,7 +1,7 @@
 ## Lambda Functions
 Lambda functions are used for functions that only have a use locally within the function you working in.
 
-```
+```c++
 auto lambda = [captures](parameters)
 {
     // content
@@ -9,7 +9,7 @@ auto lambda = [captures](parameters)
 ```
 
 The ``captures`` refers to the variables present in the enclosing scope. That is:
-```
+```c++
 void function()
 {
     int b = 2;
@@ -39,7 +39,7 @@ int main()
 <br>To access the value of the variable a, write ``[a]``.
 
 Example:
-```
+```c++
 void function()
 {
     int a = 1;

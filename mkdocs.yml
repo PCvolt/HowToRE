@@ -12,6 +12,7 @@ nav:
         - Search for Strings: ghidra/search_for_strings.md
         - Naming conventions: ghidra/naming_conventions.md
     - C++:
+        - Static: cpp/static.md
         - Pointers and References: cpp/pointers_references.md
         - Member Initialization List: cpp/initializer_list.md
         - Lambda Functions: cpp/lambdas.md

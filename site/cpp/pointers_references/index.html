@@ -62,6 +62,8 @@
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../static/">Static</a>
+                  </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Pointers and References</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
@@ -124,7 +126,7 @@
 <p>Use pointers for data structures, address arithmetics and everything else.
 <br>Use references for function parameters and return types.</p>
 <p>Example with variables:</p>
-<pre><code>void incrementBy(int &amp;a, int b)
+<pre><code class="language-c++">void incrementBy(int &amp;a, int b)
 {
     a = a + b
 }
@@ -140,7 +142,7 @@ int main void()
 }
 </code></pre>
 <p>Example with a function:</p>
-<pre><code>void printMessage(const std::string&amp; message)
+<pre><code class="language-c++">void printMessage(const std::string&amp; message)
 {
     std::cout &lt;&lt; message &lt;&lt; std::endl;
 }
@@ -156,14 +158,14 @@ int main() {
 }
 </code></pre>
 <h3 id="rules">Rules</h3>
-<pre><code>int a = 0;
+<pre><code class="language-c++">int a = 0;
 
 int *ptr = &amp;a; // address of a
 int &amp;ref = a; // ref is an alias of a
 </code></pre>
 <hr />
 <p><strong>Accessing the value and address</strong>:</p>
-<pre><code>std::cout &lt;&lt; *ptr &lt;&lt; std::endl; // displays the value of a
+<pre><code class="language-c++">std::cout &lt;&lt; *ptr &lt;&lt; std::endl; // displays the value of a
 std::cout &lt;&lt; ref &lt;&lt; std::endl; // displays the value of a
 
 std::cout &lt;&lt; ptr &lt;&lt; std::endl; // displays the address of a
@@ -173,7 +175,7 @@ std::cout &lt;&lt; &amp;ref &lt;&lt; std::endl; // displays the address of a
 <p><strong>NULL</strong>:
 <br>A reference cannot be null, a pointer can be.
 <br>A reference must always be initialized.</p>
-<pre><code> // valid
+<pre><code class="language-c++"> // valid
 int *ptr;
 int *ptr2 = nullptr;
 
@@ -184,7 +186,7 @@ int &amp;ref;
 <p><strong>Reassignation</strong>:
 <br>A reference cannot be reassigned after initialization.
 <br>A pointer can be reassigned as many times as you need.</p>
-<pre><code>int a;
+<pre><code class="language-c++">int a;
 int b;
 
 int *ptr = &amp;a;
@@ -196,7 +198,7 @@ ref = b; // not valid
 <hr />
 <p><strong>Indirection</strong>:
 <br>A reference only offers one level of indirection, whereas pointers offer as many as you want.</p>
-<pre><code>int a;
+<pre><code class="language-c++">int a;
 int *ptr = &amp;a;
 int **pptr = &amp;ptr; // valid
 
@@ -210,7 +212,7 @@ int &amp;&amp;ref = ref; // not valid
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../ghidra/naming_conventions/" class="btn btn-neutral float-left" title="Naming conventions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../static/" class="btn btn-neutral float-left" title="Static"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../initializer_list/" class="btn btn-neutral float-right" title="Member Initialization List">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -234,7 +236,7 @@ int &amp;&amp;ref = ref; // not valid
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../ghidra/naming_conventions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../static/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../initializer_list/" style="color: #fcfcfc">Next &raquo;</a></span>

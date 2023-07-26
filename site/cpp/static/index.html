@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/lambdas/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cpp/static/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Lambda Functions - Reverse Engineering | PC_volt</title>
+    <title>Static - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Lambda Functions";
-        var mkdocs_page_input_path = "cpp\\lambdas.md";
-        var mkdocs_page_url = "/cpp/lambdas/";
+        var mkdocs_page_name = "Static";
+        var mkdocs_page_input_path = "cpp\\static.md";
+        var mkdocs_page_url = "/cpp/static/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -62,15 +62,21 @@
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../static/">Static</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Static</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#static-variable">Static variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-member-variable">Static member variable</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-member-function">Static member function</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../initializer_list/">Member Initialization List</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Lambda Functions</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../lambdas/">Lambda Functions</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../smart_pointers/">Smart Pointers</a>
                   </li>
@@ -106,7 +112,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>C++ &raquo;</li>
-      <li>Lambda Functions</li>
+      <li>Static</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -115,62 +121,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="lambda-functions">Lambda Functions</h2>
-<p>Lambda functions are used for functions that only have a use locally within the function you working in.</p>
-<pre><code class="language-c++">auto lambda = [captures](parameters)
-{
-    // content
-};
-</code></pre>
-<p>The <code>captures</code> refers to the variables present in the enclosing scope. That is:</p>
+                <h2 id="static">Static</h2>
+<h3 id="static-variable">Static variable</h3>
+<p>A static variable are initialized only once and hold the value even when going out of the function. Their lifetime persists through the lifetime of the program itself.</p>
+<p><em>Global variables have a lifetime that begins before the programs starts! For a static variable, it is only during the execution.</em></p>
 <pre><code class="language-c++">void function()
 {
-    int b = 2;
-    auto funcionLambda = [&amp;]()
-    {
-        std::cout &lt;&lt; b &lt;&lt; std::endl; // can only access b
-    };
-}
-
+    static int count = 0;
+    count += 2;
+    std::cout &lt;&lt; count &lt;&lt; std::endl;
+} // OUTPUT: 0 2 4 6 8
 
 int main()
 {
-    int a = 1;
-
-    auto mainLambda = [&amp;]()
-    {
-        std::cout &lt;&lt; a &lt;&lt; std::endl; // can only access a
-    };
-
-    function();
+    for (int i = 0; i &lt; 5; ++i)
+        function();
+    return EXIT_SUCCESS;
 }
 </code></pre>
-<p><br><code>[&amp;]</code> will capture every variable in the scope by reference.<br>To access a by reference, write <code>[&amp;a]</code>.</p>
-<p><code>[=]</code> will capture every variable in the scope by value.
-<br>To access the value of the variable a, write <code>[a]</code>.</p>
-<p>Example:</p>
-<pre><code class="language-c++">void function()
+<h3 id="static-member-variable">Static member variable</h3>
+<p>A static variable is a variable shared among all the objects of the class. It is not initialized in the constructor, and must be initialized outside of the class.</p>
+<pre><code class="language-c++">class Class 
 {
-    int a = 1;
-    int b = 2;
-    int c = 3;
+    public:
+        static int instancesNumber;
+}
 
-    auto computeValueA = [&amp;a, b](int number)
-    {
-        // a is captured by reference, and b by value
-        // c is not captured
-        a = a * b + number;
-    };
+int Class:instancesNumber = 0;
+</code></pre>
+<h3 id="static-member-function">Static member function</h3>
+<p>A static function is a function associated to the Class itself rather than its objects. As such, static functions can only manipulate static variables, but such functions can be called even without an instance of the Class!</p>
+<pre><code class="language-c++">class Class 
+{
+    public:
+        static int number;
 
-    computeValueA(4) // a is now equal to 1 * 2 + 4 = 6
+        static void incrementNumber()
+        {
+            number += 1;
+        }
+}
+
+// The initialization is made outside the main
+// Else, each time function would be called, it would reset to 50
+// This holds for main() as well, for good practice measures
+int Class:number = 50;
+
+int function()
+{
+    Class:incrementNumber();
 }
 </code></pre>
+<p>Note that static function do not have access to the <code>this</code> pointer.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../initializer_list/" class="btn btn-neutral float-left" title="Member Initialization List"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../smart_pointers/" class="btn btn-neutral float-right" title="Smart Pointers">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../ghidra/naming_conventions/" class="btn btn-neutral float-left" title="Naming conventions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pointers_references/" class="btn btn-neutral float-right" title="Pointers and References">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -193,10 +201,10 @@ int main()
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../initializer_list/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../ghidra/naming_conventions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../smart_pointers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../pointers_references/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

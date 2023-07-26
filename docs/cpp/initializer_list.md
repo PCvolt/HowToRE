@@ -3,7 +3,7 @@ Member Initializer List is a mechanism for initializing the members of a class d
 
 
 ### Performance
-```
+```c++
 class Class
 {
     private: 
@@ -25,7 +25,7 @@ Initializing directly with the values in the initializer list is faster than the
 <br>*Initializing this->_data in the constructor function is slower than in the initializer list.*
 
 You should write:
-```
+```c++
 class Class
 {
     private: 
@@ -46,7 +46,7 @@ The members initialized in the list are initialized in the order they are writte
 ### Const members and References
 Const variables and references CANNOT be assigned after initialization. That is, it is not possible to do the following: 
 
-```
+```c++
 class Class
 {
     private: 
@@ -63,7 +63,7 @@ class Class
 ```
 
 you must do the following:
-```
+```c++
 class Class
 {
     private: 

@@ -2,6 +2,7 @@
 
 
 A common depiction of the registers is as follow:
+
 | Register | Usage                           |
 | -------- | ------------------------------- |
 | EAX      | General purposes / return value |

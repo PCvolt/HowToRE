@@ -8,7 +8,7 @@ Use pointers for data structures, address arithmetics and everything else.
 <br>Use references for function parameters and return types.
 
 Example with variables:
-```
+```c++
 void incrementBy(int &a, int b)
 {
     a = a + b
@@ -26,7 +26,7 @@ int main void()
 ```
 
 Example with a function:
-```
+```c++
 void printMessage(const std::string& message)
 {
     std::cout << message << std::endl;
@@ -44,7 +44,7 @@ int main() {
 ```
 
 ### Rules
-```
+```c++
 int a = 0;
 
 int *ptr = &a; // address of a
@@ -52,7 +52,7 @@ int &ref = a; // ref is an alias of a
 ```
 ---
 **Accessing the value and address**:
-```
+```c++
 std::cout << *ptr << std::endl; // displays the value of a
 std::cout << ref << std::endl; // displays the value of a
 
@@ -63,7 +63,7 @@ std::cout << &ref << std::endl; // displays the address of a
 **NULL**:
 <br>A reference cannot be null, a pointer can be.
 <br>A reference must always be initialized.
-```
+```c++
  // valid
 int *ptr;
 int *ptr2 = nullptr;
@@ -75,7 +75,7 @@ int &ref;
 **Reassignation**:
 <br>A reference cannot be reassigned after initialization.
 <br>A pointer can be reassigned as many times as you need.
-```
+```c++
 int a;
 int b;
 
@@ -88,7 +88,7 @@ ref = b; // not valid
 ---
 **Indirection**:
 <br>A reference only offers one level of indirection, whereas pointers offer as many as you want.
-```
+```c++
 int a;
 int *ptr = &a;
 int **pptr = &ptr; // valid
