@@ -62,6 +62,8 @@
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../static/">Static</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pointers_references/">Pointers and References</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Member Initialization List</a>
@@ -120,7 +122,7 @@
                 <h2 id="member-initializer-list">Member Initializer List</h2>
 <p>Member Initializer List is a mechanism for initializing the members of a class directly. It also enables initializing const members and references, whereas the constructor cannot.</p>
 <h3 id="performance">Performance</h3>
-<pre><code>class Class
+<pre><code class="language-c++">class Class
 {
     private: 
         // _ is here to indicate a member is private
@@ -139,7 +141,7 @@
 <p>Initializing directly with the values in the initializer list is faster than the constructor giving a default initialization then assigning the values.
 <br><em>Initializing this-&gt;_data in the constructor function is slower than in the initializer list.</em></p>
 <p>You should write:</p>
-<pre><code>class Class
+<pre><code class="language-c++">class Class
 {
     private: 
         std::string _id;
@@ -157,7 +159,7 @@
 <p>The members initialized in the list are initialized in the order they are written!</p>
 <h3 id="const-members-and-references">Const members and References</h3>
 <p>Const variables and references CANNOT be assigned after initialization. That is, it is not possible to do the following: </p>
-<pre><code>class Class
+<pre><code class="language-c++">class Class
 {
     private: 
         const int _id;
@@ -172,7 +174,7 @@
 };
 </code></pre>
 <p>you must do the following:</p>
-<pre><code>class Class
+<pre><code class="language-c++">class Class
 {
     private: 
         const int _id;
