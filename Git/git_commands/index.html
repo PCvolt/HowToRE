@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/naming_conventions/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/Git/git_commands/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Naming conventions - Reverse Engineering | PC_volt</title>
+    <title>Git commands - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Naming conventions";
-        var mkdocs_page_input_path = "ghidra\\naming_conventions.md";
-        var mkdocs_page_url = "/ghidra/naming_conventions/";
+        var mkdocs_page_name = "Git commands";
+        var mkdocs_page_input_path = "Git\\git_commands.md";
+        var mkdocs_page_url = "/Git/git_commands/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -53,20 +53,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Ghidra</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../ghidra_setup/">Setup</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../search_for_strings/">Search for Strings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/search_for_strings/">Search for Strings</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Naming conventions</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/naming_conventions/">Naming conventions</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
@@ -112,8 +110,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Ghidra &raquo;</li>
-      <li>Naming conventions</li>
+      <li>Git commands</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -122,26 +119,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ghidras-naming-and-how-to-read-them">Ghidra's naming and how to read them</h2>
-<p><code>FUN_&lt;ADDRESS&gt;</code>: Function at &lt;address> 
-<br><code>DAT_&lt;ADDRESS&gt;</code>: Data at &lt;address>
-<br><code>LAB_&lt;ADDRESS&gt;</code>: Label at &lt;address>, it is a function, struct, data or variable that was not defined by the developer themself.</p>
-<p>A same <code>var</code> can be used for different purposes. A bit troublesome.</p>
-<p><code>0xffffffff</code> = -1 in unsigned
-<br><code>0xbf800000</code> = -1 in floating point
-<br><code>0x3f800000</code> = 1 in floating point</p>
-<h2 id="how-to-rename-without-getting-lost">How to rename without getting lost</h2>
-<p>It is all good being able to navigate in the decompiled code and finding strings, but you need to sort this mess in a human-readable way, for yourself and others.</p>
-<p>Hit <code>l</code> to rename functions, labels, data or variables.
-<br>Don't try to rename things you are too unsure of.</p>
-<p><code>u_&lt;nameOfYourGuess&gt;</code> for functions, variables or whatever that you aren't sure of. u_ stands for unknown.</p>
+                <h3 id="git-add">Git Add</h3>
+<p>Git add allows to include the selected files or lines of code to be </p>
+<p><code>git add --all</code> or <code>git add -A</code>
+The git add command by default!
+It stages the entire repository, be it new files, modifications and deletions.</p>
+<p><code>git add -p</code> (<code>-p</code> stands for patch)
+Allows you to interactively review and apply patches on the code you want to stage.
+This inherently makes your files in your repository potentially different from the files you are staging for the commit.
+Hunks are groups of differing lines, and you decide which actions to apply:
+- <code>y</code>: stage this hunk
+- <code>n</code>: do not stage this hunk
+- <code>s</code>: split into smaller hunks
+- <code>e</code>: edit this hunk
+- <code>q</code>: quit and do not stage any more hunks
+- <code>?</code>: help
+As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.</p>
+<details><summary>Other git add commands</summary>
+
+``git add <file1 file2>``
+Stages the indicated files. Maybe the command you've seen first, but not really useful since you will be most of the time staging a lot of files. Plus, writing all the filenames is pretty long.
+
+``git add .`` (``.`` stands for the current directory)
+This command works like ``git add --all`` but:
+- it does **not** stage file deletions
+- it does **not** stage anything above the current directory
+
+``git add -u`` (``-u`` stands for update)
+This command works like ``git add --all`` but:
+- it does **not** stage new files
+- it does **not** stage anything above the current directory
+
+``git add -i`` (``-i`` stands for interactive)
+This command provides an interface to perform diverse tasks like status, update, revert, add, patch or diff. Maybe the most interesting but complex command here.
+</details>
+
+<h3 id="git-commit">Git Commit</h3>
+<p><code>git commit -m &lt;msg&gt;</code>
+The standard git commit. Use this.</p>
+<p><code>git commit --amend</code>
+When you did a little mistake on the content or the commit message, and don't want to make a fully dedicated commit to fixing it.
+You then just edit the latest commit with this.</p>
+<details><summary>Other git add commands</summary>
+``git commit -p``
+Works just like git add -p, but for commits.
+Using the staged files (with any git add command), you can decide the patches to apply to the files that will be committed.
+</details>
+
+<h3 id="git-reset">Git Reset</h3>
+<h3 id="git-rebase">Git Rebase</h3>
+<p><code>git rebase --interactive --autosquash</code></p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../search_for_strings/" class="btn btn-neutral float-left" title="Search for Strings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../cpp/static/" class="btn btn-neutral float-right" title="Static">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -163,10 +193,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../search_for_strings/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../cpp/static/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
