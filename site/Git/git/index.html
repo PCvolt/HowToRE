@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/naming_conventions/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/Git/git/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Naming conventions - Reverse Engineering | PC_volt</title>
+    <title>Git - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Naming conventions";
-        var mkdocs_page_input_path = "ghidra\\naming_conventions.md";
-        var mkdocs_page_url = "/ghidra/naming_conventions/";
+        var mkdocs_page_name = "Git";
+        var mkdocs_page_input_path = "Git\\git.md";
+        var mkdocs_page_url = "/Git/git/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -53,20 +53,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Ghidra</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../ghidra_setup/">Setup</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../search_for_strings/">Search for Strings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/search_for_strings/">Search for Strings</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Naming conventions</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/naming_conventions/">Naming conventions</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
@@ -112,8 +110,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Ghidra &raquo;</li>
-      <li>Naming conventions</li>
+      <li>Git</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -122,26 +119,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ghidras-naming-and-how-to-read-them">Ghidra's naming and how to read them</h2>
-<p><code>FUN_&lt;ADDRESS&gt;</code>: Function at &lt;address> 
-<br><code>DAT_&lt;ADDRESS&gt;</code>: Data at &lt;address>
-<br><code>LAB_&lt;ADDRESS&gt;</code>: Label at &lt;address>, it is a function, struct, data or variable that was not defined by the developer themself.</p>
-<p>A same <code>var</code> can be used for different purposes. A bit troublesome.</p>
-<p><code>0xffffffff</code> = -1 in unsigned
-<br><code>0xbf800000</code> = -1 in floating point
-<br><code>0x3f800000</code> = 1 in floating point</p>
-<h2 id="how-to-rename-without-getting-lost">How to rename without getting lost</h2>
-<p>It is all good being able to navigate in the decompiled code and finding strings, but you need to sort this mess in a human-readable way, for yourself and others.</p>
-<p>Hit <code>l</code> to rename functions, labels, data or variables.
-<br>Don't try to rename things you are too unsure of.</p>
-<p><code>u_&lt;nameOfYourGuess&gt;</code> for functions, variables or whatever that you aren't sure of. u_ stands for unknown.</p>
+                <h2 id="git">Git</h2>
+<p>The goal is to have a clean history, by selectively staging and committing pieces of the code.
+For example, instead of writing a function over multiple commits, you want to have this function being added in the history in its own commit.</p>
+<h3 id="cleaning-your-code-before-even-using-git">Cleaning your code before even using Git</h3>
+<ol>
+<li>Install pre-commit on your computer: <code>pip install pre-commit</code></li>
+<li>Install pre-commit in your repository: <code>pre-commit install</code></li>
+<li>Before any git add, run <code>pre-commit run --all</code> so your code is all nicely formatted</li>
+</ol>
+<p>Congrats, you don't even have to bother with intending yourself.</p>
+<h2 id="git-the-easy-and-dirty-way">Git the easy and dirty way</h2>
+<p>It is dirty in the sense that you have no care for the history and only the result counts.
+This is acceptable for smaller projects, or don't want to bother if you are in a small team.</p>
+<p><code>git add -A</code>
+<code>git commit -m "&lt;msg&gt;"</code>
+<code>git push</code></p>
+<p><code>git branch &lt;branch-name&gt;</code> creates the branch
+<code>git checkout -b &lt;branch-name&gt;</code> creates the branch and switch to it
+<code>git checkout &lt;branch-name&gt;</code> switches to the branch</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../search_for_strings/" class="btn btn-neutral float-left" title="Search for Strings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../cpp/static/" class="btn btn-neutral float-right" title="Static">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -163,10 +162,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../search_for_strings/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../cpp/static/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
