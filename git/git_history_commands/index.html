@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ghidra/ghidra_setup/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/git_history_commands/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Setup - Reverse Engineering | PC_volt</title>
+    <title>Git History Commands - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Setup";
-        var mkdocs_page_input_path = "ghidra\\ghidra_setup.md";
-        var mkdocs_page_url = "/ghidra/ghidra_setup/";
+        var mkdocs_page_name = "Git History Commands";
+        var mkdocs_page_input_path = "git\\git_history_commands.md";
+        var mkdocs_page_url = "/git/git_history_commands/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -41,12 +41,22 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Git</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git/">Git</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_commands/">Git Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../git_commands/">Git Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_history_commands/">Git History Commands</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Git History Commands</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#git-commit-amend">Git Commit --amend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-reset">Git Reset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-rebase">Git Rebase</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-revert">Git Revert</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CheatEngine</span></p>
@@ -55,22 +65,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Ghidra</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Setup</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#get-java-jre-and-jdk">Get Java JRE and JDK</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/ghidra_setup/">Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../new_project/">Open a new Project</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/new_project/">Open a new Project</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../keybinds/">Keybinds</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/keybinds/">Keybinds</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../hierarchy/">Find the Hierarchy</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/hierarchy/">Find the Hierarchy</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../search_for_strings/">Search for Strings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/search_for_strings/">Search for Strings</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../naming_conventions/">Naming conventions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ghidra/naming_conventions/">Naming conventions</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
@@ -116,8 +122,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Ghidra &raquo;</li>
-      <li>Setup</li>
+          <li>Git &raquo;</li>
+      <li>Git History Commands</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -126,19 +132,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="setting-up-ghidra">Setting up Ghidra</h2>
-<p>Get the version of your choice here: <a href="https://github.com/NationalSecurityAgency/ghidra/releases">Ghidra Github Releases</a></p>
-<h3 id="get-java-jre-and-jdk">Get Java JRE and JDK</h3>
-<ul>
-<li>Install Java JRE (any version should do).</li>
-<li>For Ghidra 9.1.2 (the one that I use), install between JDK11 and JDK15. Ghidra 10 should support between JDK17 and JDK20.</li>
-</ul>
+                <h2 id="the-history">The history</h2>
+<p>The reason we do that is because simply using <code>git merge</code> into the master will cause a lot of conflicts when working with other devs.
+<br>Since merging implies creating a new commit in the main, it will also create conflicts to resolve </p>
+<p>Commits all have a <strong>hash</strong>, an identifier so to speak.
+<br><strong>HEAD</strong> is the pointer to the latest commit you performed. </p>
+<pre><code class="language-ruby">commit d66b78231f26cb7cf738678bea1d081b8b4def71 (HEAD -&gt; main, origin/main)
+Author: PC_volt &lt;this is private&gt;
+Date:   Sun Aug 6 18:40:14 2023 +0200
+</code></pre>
+<p>You can point anywhere, but if you are not pointing to the HEAD, you will be in a <strong>detached HEAD</strong> state.</p>
+<p>More here : <a href="https://www.atlassian.com/git/tutorials/rewriting-history">Atlassian: Rewriting History</a></p>
+<hr />
+<h3 id="git-commit-amend">Git Commit --amend</h3>
+<p>Note that the modified commits are actually new commits.
+<br>Be very careful not to --amend a commit on which someone else is developing. </p>
+<p><code>git commit --amend -m "message"</code> modifies the commit and replaces the message. 
+<br><code>git commit --amend --no-edit</code> modifies the commit without changing the original message.</p>
+<hr />
+<h3 id="git-reset">Git Reset</h3>
+<p>Git reset moves the HEAD</p>
+<p><code>git reset HEAD</code></p>
+<hr />
+<h3 id="git-rebase">Git Rebase</h3>
+<p><code>git rebase</code> directly interacts with the ramification of the tree.</p>
+<p>Instead of merging and creating a new commit for implementing the changes, the commits of the branch are duplicated on top of the HEAD.</p>
+<p>Instead of having a ramified history, you create a linear history that is easier to understand.</p>
+<p>The hash are different as well</p>
+<p><code>git rebase --interactive --autosquash</code></p>
+<hr />
+<h3 id="git-revert">Git Revert</h3>
+<p><code>git revert &lt;commit-hash&gt;</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../cheatengine/cheatengine/" class="btn btn-neutral float-left" title="CheatEngine"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../new_project/" class="btn btn-neutral float-right" title="Open a new Project">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../git_commands/" class="btn btn-neutral float-left" title="Git Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../cheatengine/cheatengine/" class="btn btn-neutral float-right" title="CheatEngine">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -161,10 +191,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../cheatengine/cheatengine/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../git_commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../new_project/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../cheatengine/cheatengine/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
