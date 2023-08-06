@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/git_history_commands/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/git_branches/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Git History Commands - Reverse Engineering | PC_volt</title>
+    <title>Git Branches - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Git History Commands";
-        var mkdocs_page_input_path = "git\\git_history_commands.md";
-        var mkdocs_page_url = "/git/git_history_commands/";
+        var mkdocs_page_name = "Git Branches";
+        var mkdocs_page_input_path = "git\\git_branches.md";
+        var mkdocs_page_url = "/git/git_branches/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -48,21 +48,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../git_remote_commands/">Git Remote Commands</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git_branches/">Git Branches</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Git History Commands</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Git Branches</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#git-commit-amend">Git Commit --amend</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#git-reset">Git Reset</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#git-rebase">Git Rebase</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#-squash-and-autosquash">--squash and --autosquash</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#git-revert">Git Revert</a>
-    </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git_history_commands/">Git History Commands</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../git_submodules/">Git Submodules</a>
                   </li>
@@ -131,7 +121,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Git &raquo;</li>
-      <li>Git History Commands</li>
+      <li>Git Branches</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -140,65 +130,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="git-history-commands">Git History Commands</h2>
-<p>These commands will tamper with the history, rewriting it to make it easier to trace what was done, and divide the commits into the implementation of the features separately rather than everything at the same time. </p>
-<p>More here : <a href="https://www.atlassian.com/git/tutorials/rewriting-history">Atlassian: Rewriting History</a></p>
-<hr />
-<h3 id="git-commit-amend">Git Commit --amend</h3>
-<p>Note that the modified commits are actually new commits.
-<br>Be very careful not to --amend a commit on which someone else is developing. </p>
-<p><code>git commit --amend -m "message"</code> modifies the commit and replaces the message. 
-<br><code>git commit --amend --no-edit</code> modifies the commit without changing the original message.</p>
-<hr />
-<h3 id="git-reset">Git Reset</h3>
-<p>Git reset moves the HEAD</p>
-<p><code>git reset HEAD</code></p>
-<hr />
-<h3 id="git-rebase">Git Rebase</h3>
-<p>Git Rebase is a means to update your feature branch with the main as the source, without creating a commit each time you have to update your feature branch! Let's see how it works.</p>
-<p>Problem: we want to update our feature branch with the latest changes applied on the main.
-<center></p>
-<p><img alt="Alt text" src="../image.png" />
-</center></p>
-<pre><code>// Solution #1: MERGE
-git checkout feature
-git merge main
-</code></pre>
-<p><center></p>
-<p><img alt="Alt text" src="../image-1.png" />
-</center>
-As you can see, every update we will be doing will require an extra commit, which on big project.</p>
-<hr />
-<pre><code>// Solution #2: REBASE
-git checkout feature
-git rebase main
-</code></pre>
-<p><center></p>
-<p><img alt="Alt text" src="../image-2.png" />
-</center>
-Here, the feature branch is replayed from the HEAD of the main. Each commit of the branch becomes a new commit with a different hash.</p>
-<p>This has various benefits:
-- the history of the branch is linear and easy to read
-- there is no fork, you don't have to check when the updates from main occurred since everything is based on the main's latest commit </p>
-<p><strong>NEVER REBASE A PUBLIC BRANCH!</strong>
-<br><strong>NEVER REBASE A BRANCH SHARED WITH SOMEONE ELSE!</strong></p>
-<p>Since it <strong>rewrites</strong> the history and discards previous commits to make new commits. It is a <strong>destructive</strong> operation!</p>
-<h3 id="-squash-and-autosquash">--squash and --autosquash</h3>
-<p>Because of this, you may have to force push:</p>
-<p><code>git push --force</code> pushes your rewritten history, does not preserve new commits from other people in the remote</p>
-<p><code>git push --force-with-lease</code> pushes your rewritten history only if there are new commits. This prevents from forcefully pushing and erasing the work from others. Use <code>git fetch</code> </p>
-<p><code>git rebase --interactive --autosquash</code></p>
-<p>Video: <a href="https://www.youtube.com/watch?v=f1wnYdLEpgI">Git Rebase in 6 minutes</a></p>
-<p><a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">Atlassian: Merge vs Rebase </a></p>
-<hr />
-<h3 id="git-revert">Git Revert</h3>
-<p><code>git revert &lt;commit-hash&gt;</code></p>
+                <h2 id="git-branches">Git Branches</h2>
+<p>Branches are made to work in a parallel environment.
+<br>You choose which commit to create a branch of off (usually the latest commit of main) and can choose</p>
+<p>This is the defining feature that allows collaboration without overstepping on someone else's work, while still be able to share it.</p>
+<p><code>git branch &lt;branch-name&gt;</code>
+<br>Creates the branch.</p>
+<p><code>git checkout &lt;branch-name&gt;</code>
+<br>Switches to the branch.</p>
+<p><code>git checkout -b &lt;branch-name&gt;</code>
+<br> Creates the branch and switch to it.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../git_branches/" class="btn btn-neutral float-left" title="Git Branches"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../git_submodules/" class="btn btn-neutral float-right" title="Git Submodules">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../git_remote_commands/" class="btn btn-neutral float-left" title="Git Remote Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../git_history_commands/" class="btn btn-neutral float-right" title="Git History Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -221,10 +168,10 @@ Here, the feature branch is replayed from the HEAD of the main. Each commit of t
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../git_branches/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../git_remote_commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../git_submodules/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../git_history_commands/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -1,3 +1,4 @@
+## Git Local Commands
 Rundown of the most common git commands.
 
 ### Git Add
@@ -55,15 +56,3 @@ You then just edit the latest commit with this.
 <br>Works just like git add -p, but for commits.
 Using the staged files (with any git add command), you can decide the patches to apply to the files that will be committed.
 </details>
-
----
-### Git Pull
-
-``git pull``
-<br>Pulls the commits of the remote repository into the local repository. Always do this before pushing to avoid conflicts.
-
----
-### Git Push
-
-``git push``
-<br>Pushes the committed changes towards the remote repository.

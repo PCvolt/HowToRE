@@ -3,8 +3,11 @@ site_url: https://pc_volt.com/
 nav:
     - Git:
         - Git: git/git.md
-        - Git Commands: git/git_commands.md
+        - Git Local Commands: git/git_local_commands.md
+        - Git Remote Commands: git/git_remote_commands.md
+        - Git Branches: git/git_branches.md
         - Git History Commands: git/git_history_commands.md
+        - Git Submodules: git/git_submodules.md
     - CheatEngine:
         - CheatEngine: cheatengine/cheatengine.md
     - Ghidra:

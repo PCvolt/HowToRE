@@ -1,19 +1,5 @@
-## The history
-
-The reason we do that is because simply using ``git merge`` into the master will cause a lot of conflicts when working with other devs.
-<br>Since merging implies creating a new commit in the main, it will also create conflicts to resolve 
-
-Commits all have a **hash**, an identifier so to speak.
-<br>**HEAD** is the pointer to the latest commit you performed. 
-
-```ruby
-commit d66b78231f26cb7cf738678bea1d081b8b4def71 (HEAD -> main, origin/main)
-Author: PC_volt <this is private>
-Date:   Sun Aug 6 18:40:14 2023 +0200
-```
-
-You can point anywhere, but if you are not pointing to the HEAD, you will be in a **detached HEAD** state.
-
+## Git History Commands
+These commands will tamper with the history, rewriting it to make it easier to trace what was done, and divide the commits into the implementation of the features separately rather than everything at the same time. 
 
 More here : [Atlassian: Rewriting History](https://www.atlassian.com/git/tutorials/rewriting-history)
 
@@ -34,17 +20,61 @@ Git reset moves the HEAD
 
 ---
 ### Git Rebase
-``git rebase`` directly interacts with the ramification of the tree.
+Git Rebase is a means to update your feature branch with the main as the source, without creating a commit each time you have to update your feature branch! Let's see how it works.
 
-Instead of merging and creating a new commit for implementing the changes, the commits of the branch are duplicated on top of the HEAD.
+Problem: we want to update our feature branch with the latest changes applied on the main.
+<center>
 
-Instead of having a ramified history, you create a linear history that is easier to understand.
+![Alt text](image.png)
+</center>
 
-The hash are different as well
+```
+// Solution #1: MERGE
+git checkout feature
+git merge main
+```
+
+<center>
+
+![Alt text](image-1.png)
+</center>
+As you can see, every update we will be doing will require an extra commit, which on big project.
+
+---
+```
+// Solution #2: REBASE
+git checkout feature
+git rebase main
+```
+<center>
+
+![Alt text](image-2.png)
+</center>
+Here, the feature branch is replayed from the HEAD of the main. Each commit of the branch becomes a new commit with a different hash.
+
+This has various benefits:
+- the history of the branch is linear and easy to read
+- there is no fork, you don't have to check when the updates from main occurred since everything is based on the main's latest commit 
+
+
+**NEVER REBASE A PUBLIC BRANCH!**
+<br>**NEVER REBASE A BRANCH SHARED WITH SOMEONE ELSE!**
+
+Since it **rewrites** the history and discards previous commits to make new commits. It is a **destructive** operation!
+### --squash and --autosquash
+
+Because of this, you may have to force push:
+
+``git push --force`` pushes your rewritten history, does not preserve new commits from other people in the remote
+
+``git push --force-with-lease`` pushes your rewritten history only if there are new commits. This prevents from forcefully pushing and erasing the work from others. Use ``git fetch`` 
 
 
 ``git rebase --interactive --autosquash``
 
+Video: [Git Rebase in 6 minutes](https://www.youtube.com/watch?v=f1wnYdLEpgI)
+
+[Atlassian: Merge vs Rebase ](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
 ---
 ### Git Revert
