@@ -4,6 +4,7 @@ nav:
     - Git:
         - Git: git/git.md
         - Git Commands: git/git_commands.md
+        - Git History Commands: git/git_history_commands.md
     - CheatEngine:
         - CheatEngine: cheatengine/cheatengine.md
     - Ghidra:

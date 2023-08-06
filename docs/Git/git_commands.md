@@ -1,3 +1,5 @@
+Rundown of the most common git commands.
+
 ### Git Add
 Git add allows to include the selected files or lines of code to be 
 
@@ -18,7 +20,7 @@ Hunks are groups of differing lines, and you decide which actions to apply:
 - ``?``: help
 As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.
 
-<details><summary>Other git add commands</summary>
+<details><summary>Other commands</summary>
 
 ``git add <file1 file2>``
 <br>Stages the indicated files. Maybe the command you've seen first, but not really useful since you will be most of the time staging a lot of files. Plus, writing all the filenames is pretty long.
@@ -47,7 +49,7 @@ As you can see, this is the most complex but most useful for keeping a clean his
 <br>When you did a little mistake on the content or the commit message, and don't want to make a fully dedicated commit to fixing it.
 You then just edit the latest commit with this.
 
-<details><summary>Other git add commands</summary>
+<details><summary>Other commands</summary>
 
 ``git commit -p``
 <br>Works just like git add -p, but for commits.
@@ -55,9 +57,13 @@ Using the staged files (with any git add command), you can decide the patches to
 </details>
 
 ---
-### Git Reset
+### Git Pull
+
+``git pull``
+<br>Pulls the commits of the remote repository into the local repository. Always do this before pushing to avoid conflicts.
 
 ---
-### Git Rebase
+### Git Push
 
-``git rebase --interactive --autosquash``
+``git push``
+<br>Pushes the committed changes towards the remote repository.

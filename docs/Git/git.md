@@ -14,9 +14,9 @@ It is dirty in the sense that you have no care for the history and only the resu
 This is acceptable for smaller projects, or don't want to bother if you are in a small team.
 
 ``git add -A``
-``git commit -m "<msg>"``
-``git push``
+<br>``git commit -m "<msg>"``
+<br>``git push``
 
 ``git branch <branch-name>`` creates the branch
-``git checkout -b <branch-name>`` creates the branch and switch to it
-``git checkout <branch-name>`` switches to the branch
+<br>``git checkout -b <branch-name>`` creates the branch and switch to it
+<br>``git checkout <branch-name>`` switches to the branch
