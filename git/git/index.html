@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/Git/git_commands/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/git/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Git commands - Reverse Engineering | PC_volt</title>
+    <title>Git - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Git commands";
-        var mkdocs_page_input_path = "Git\\git_commands.md";
-        var mkdocs_page_url = "/Git/git_commands/";
+        var mkdocs_page_name = "Git";
+        var mkdocs_page_input_path = "git\\git.md";
+        var mkdocs_page_url = "/git/git/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -41,10 +41,14 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Git</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="../../git/git.md">Git</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Git</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cleaning-your-code-before-even-using-git">Cleaning your code before even using Git</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../git/git_commands.md">Git Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../git_commands/">Git Commands</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CheatEngine</span></p>
@@ -110,7 +114,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>Git commands</li>
+          <li>Git &raquo;</li>
+      <li>Git</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -119,59 +124,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="git-add">Git Add</h3>
-<p>Git add allows to include the selected files or lines of code to be </p>
-<p><code>git add --all</code> or <code>git add -A</code>
-The git add command by default!
-It stages the entire repository, be it new files, modifications and deletions.</p>
-<p><code>git add -p</code> (<code>-p</code> stands for patch)
-Allows you to interactively review and apply patches on the code you want to stage.
-This inherently makes your files in your repository potentially different from the files you are staging for the commit.
-Hunks are groups of differing lines, and you decide which actions to apply:
-- <code>y</code>: stage this hunk
-- <code>n</code>: do not stage this hunk
-- <code>s</code>: split into smaller hunks
-- <code>e</code>: edit this hunk
-- <code>q</code>: quit and do not stage any more hunks
-- <code>?</code>: help
-As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.</p>
-<details><summary>Other git add commands</summary>
-
-``git add <file1 file2>``
-Stages the indicated files. Maybe the command you've seen first, but not really useful since you will be most of the time staging a lot of files. Plus, writing all the filenames is pretty long.
-
-``git add .`` (``.`` stands for the current directory)
-This command works like ``git add --all`` but:
-- it does **not** stage file deletions
-- it does **not** stage anything above the current directory
-
-``git add -u`` (``-u`` stands for update)
-This command works like ``git add --all`` but:
-- it does **not** stage new files
-- it does **not** stage anything above the current directory
-
-``git add -i`` (``-i`` stands for interactive)
-This command provides an interface to perform diverse tasks like status, update, revert, add, patch or diff. Maybe the most interesting but complex command here.
-</details>
-
-<h3 id="git-commit">Git Commit</h3>
-<p><code>git commit -m &lt;msg&gt;</code>
-The standard git commit. Use this.</p>
-<p><code>git commit --amend</code>
-When you did a little mistake on the content or the commit message, and don't want to make a fully dedicated commit to fixing it.
-You then just edit the latest commit with this.</p>
-<details><summary>Other git add commands</summary>
-``git commit -p``
-Works just like git add -p, but for commits.
-Using the staged files (with any git add command), you can decide the patches to apply to the files that will be committed.
-</details>
-
-<h3 id="git-reset">Git Reset</h3>
-<h3 id="git-rebase">Git Rebase</h3>
-<p><code>git rebase --interactive --autosquash</code></p>
+                <h2 id="git">Git</h2>
+<p>The goal is to have a clean history, by selectively staging and committing pieces of the code.
+For example, instead of writing a function over multiple commits, you want to have this function being added in the history in its own commit.</p>
+<h3 id="cleaning-your-code-before-even-using-git">Cleaning your code before even using Git</h3>
+<ol>
+<li>Install pre-commit on your computer: <code>pip install pre-commit</code></li>
+<li>Install pre-commit in your repository: <code>pre-commit install</code></li>
+<li>Before any git add, run <code>pre-commit run --all</code> so your code is all nicely formatted</li>
+</ol>
+<p>Congrats, you don't even have to bother with intending yourself.</p>
+<h2 id="git-the-easy-and-dirty-way">Git the easy and dirty way</h2>
+<p>It is dirty in the sense that you have no care for the history and only the result counts.
+This is acceptable for smaller projects, or don't want to bother if you are in a small team.</p>
+<p><code>git add -A</code>
+<code>git commit -m "&lt;msg&gt;"</code>
+<code>git push</code></p>
+<p><code>git branch &lt;branch-name&gt;</code> creates the branch
+<code>git checkout -b &lt;branch-name&gt;</code> creates the branch and switch to it
+<code>git checkout &lt;branch-name&gt;</code> switches to the branch</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../git_commands/" class="btn btn-neutral float-right" title="Git Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -193,6 +170,8 @@ Using the staged files (with any git add command), you can decide the patches to
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+    
+      <span><a href="../git_commands/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
