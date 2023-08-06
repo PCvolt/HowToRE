@@ -144,14 +144,16 @@
 <p><code>git add -p</code> (<code>-p</code> stands for patch)
 <br>Allows you to interactively review and apply patches on the code you want to stage.
 <br>This inherently makes your files in your repository potentially different from the files you are staging for the commit.</p>
-<p>Hunks are groups of differing lines, and you decide which actions to apply:
-- <code>y</code>: stage this hunk
-- <code>n</code>: do not stage this hunk
-- <code>s</code>: split into smaller hunks
-- <code>e</code>: edit this hunk
-- <code>q</code>: quit and do not stage any more hunks
-- <code>?</code>: help
-As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.</p>
+<p>Hunks are groups of differing lines, and you decide which actions to apply:</p>
+<ul>
+<li><code>y</code>: stage this hunk</li>
+<li><code>n</code>: do not stage this hunk</li>
+<li><code>s</code>: split into smaller hunks</li>
+<li><code>e</code>: edit this hunk</li>
+<li><code>q</code>: quit and do not stage any more hunks</li>
+<li><code>?</code>: help
+As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.</li>
+</ul>
 <details><summary>Other commands</summary>
 
 ``git add <file1 file2>``
