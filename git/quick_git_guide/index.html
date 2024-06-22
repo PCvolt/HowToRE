@@ -138,22 +138,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="git">Git</h1>
+                <h2 id="quick-git-guide">Quick Git Guide</h2>
 <p>Git has a plethora of commands, here are the ones I use most.</p>
-<h2 id="getting-started-and-updating-a-repo">Getting started and updating a repo</h2>
+<h3 id="getting-started-and-updating-a-repo">Getting started and updating a repo</h3>
 <ul>
 <li><code>git init</code> to initialize git in a directory.</li>
 <li><code>git clone &lt;url&gt;</code> to clone a repository in the current directory.</li>
 <li><code>git pull --ff-only</code> to update a repository. --ff-only is recommended to avoid any potential merging.</li>
 </ul>
-<h2 id="checking-current-status">Checking current status</h2>
+<h3 id="checking-current-status">Checking current status</h3>
 <ul>
 <li><code>git status</code> to show the global status and currently staged and modified files.</li>
 <li><code>git log</code> to show the latest logs. Press <code>q</code> to quit.</li>
 <li><code>git show &lt;commit1&gt;</code> to show the content of a commit.</li>
 <li><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code> to show the difference between two commits.</li>
 </ul>
-<h2 id="adding-committing-and-pushing">Adding, committing and pushing</h2>
+<h3 id="adding-committing-and-pushing">Adding, committing and pushing</h3>
 <ul>
 <li><code>git add &lt;file1&gt; &lt;file2&gt; ...</code> to add file(s) to the stage.</li>
 <li><code>git add -p</code> to verify all modifications and add them to the stage.</li>
@@ -163,18 +163,18 @@
 <li><code>git push -f</code> to push a modified history (through amend or rebasing).</li>
 </ul>
 <p>If you need to fix an earlier commit than the current one, rebase.</p>
-<h2 id="going-between-branches">Going between branches</h2>
+<h3 id="going-between-branches">Going between branches</h3>
 <ul>
 <li><code>git checkout &lt;branch-name&gt;</code> to change branch</li>
 <li><code>git checkout -b &lt;branch-name&gt;</code> to create a branch and switch to it</li>
 <li><code>git branch -D &lt;branch-name&gt;</code> to delete a branch</li>
 </ul>
-<h2 id="rebasing">Rebasing</h2>
+<h3 id="rebasing">Rebasing</h3>
 <ul>
 <li><code>git pull --rebase origin main</code> to rebase to the main, or another branch. </li>
 <li><code>git rebase -i HEAD~&lt;number&gt;</code> to modify your history, reordering commits, merging them together, change their message, etc. Extremely powerful.</li>
 </ul>
-<h2 id="vim">Vim</h2>
+<h3 id="vim">Vim</h3>
 <p>Summoned by default when doing amends or rebases, very powerful but very weird to use at first.
 <br>For what matters to us, only a very few commands are necessary.</p>
 <ul>
