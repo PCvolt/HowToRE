@@ -161,10 +161,12 @@ They however cannot directly produce libraries at all.</p>
 <p>In the context of Reverse Engineering, a decompiler/disassembler is a program that takes whatever result a compiler/assembler produced, and tries to write the source code in C/C++ or in ASM.</p>
 <h2 id="linkers">Linkers</h2>
 <p>Since the compiler creates a <code>.o</code>/<code>.obj</code> for each .cpp file you write, you end up with many object files.
-The linker's job is to:
-- combine all of these object files into a final output
-- resolve symbols, meaning all function and variable calls are correctly made across all files
-- binding addresses properly when loading libraries in memory</p>
+The linker's job is to:</p>
+<ul>
+<li>combine all of these object files into a final output</li>
+<li>resolve symbols, meaning all function and variable calls are correctly made across all files</li>
+<li>binding addresses properly when loading libraries in memory</li>
+</ul>
 <p>The final output can be:</p>
 <ul>
 <li>executables: <code></code> (Linux) or <code>.exe</code> (Windows)</li>
