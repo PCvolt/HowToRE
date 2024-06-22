@@ -106,27 +106,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://pc_volt.com/git/git_branches/</loc>
-         <lastmod>2024-06-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://pc_volt.com/git/git_history_commands/</loc>
          <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://pc_volt.com/git/git_local_commands/</loc>
-         <lastmod>2024-06-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://pc_volt.com/git/git_remote_commands/</loc>
-         <lastmod>2024-06-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://pc_volt.com/git/git_submodules/</loc>
+         <loc>https://pc_volt.com/git/quick_git_guide/</loc>
          <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>

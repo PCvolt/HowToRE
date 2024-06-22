@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/git_branches/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/git/quick_git_guide/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Git Branches - Reverse Engineering | PC_volt</title>
+    <title>Quick Git Guide - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Git Branches";
-        var mkdocs_page_input_path = "git\\git_branches.md";
-        var mkdocs_page_url = "/git/git_branches/";
+        var mkdocs_page_name = "Quick Git Guide";
+        var mkdocs_page_input_path = "git\\quick_git_guide.md";
+        var mkdocs_page_url = "/git/quick_git_guide/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -40,23 +40,6 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Git</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git_local_commands/">Git Local Commands</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git_remote_commands/">Git Remote Commands</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Git Branches</a>
-    <ul class="current">
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git_history_commands/">Git History Commands</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git_submodules/">Git Submodules</a>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">ASM</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../ASM/compiler_linker/">Compiler & Linker</a>
@@ -103,6 +86,29 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../cpp/type_casting/">Type Casting</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Git</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Quick Git Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started-and-updating-a-repo">Getting started and updating a repo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#checking-current-status">Checking current status</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-committing-and-pushing">Adding, committing and pushing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#going-between-branches">Going between branches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rebasing">Rebasing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vim">Vim</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git_history_commands/">Git History Commands</a>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../else/create_symlink/">Create a Symbolic Link</a>
@@ -123,7 +129,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Git &raquo;</li>
-      <li>Git Branches</li>
+      <li>Quick Git Guide</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -132,21 +138,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="git-branches">Git Branches</h2>
-<p>Branches are made to work in a parallel environment.
-<br>You choose which commit to create a branch of off (usually the latest commit of main) and can choose</p>
-<p>This is the defining feature that allows collaboration without overstepping on someone else's work, while still be able to share it.</p>
-<p><code>git branch &lt;branch-name&gt;</code>
-<br>Creates the branch.</p>
-<p><code>git checkout &lt;branch-name&gt;</code>
-<br>Switches to the branch.</p>
-<p><code>git checkout -b &lt;branch-name&gt;</code>
-<br> Creates the branch and switch to it.</p>
+                <h1 id="git">Git</h1>
+<p>Git has a plethora of commands, here are the ones I use most.</p>
+<h2 id="getting-started-and-updating-a-repo">Getting started and updating a repo</h2>
+<ul>
+<li><code>git init</code> to initialize git in a directory.</li>
+<li><code>git clone &lt;url&gt;</code> to clone a repository in the current directory.</li>
+<li><code>git pull --ff-only</code> to update a repository. --ff-only is recommended to avoid any potential merging.</li>
+</ul>
+<h2 id="checking-current-status">Checking current status</h2>
+<ul>
+<li><code>git status</code> to show the global status and currently staged and modified files.</li>
+<li><code>git log</code> to show the latest logs. Press <code>q</code> to quit.</li>
+<li><code>git show &lt;commit1&gt;</code> to show the content of a commit.</li>
+<li><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code> to show the difference between two commits.</li>
+</ul>
+<h2 id="adding-committing-and-pushing">Adding, committing and pushing</h2>
+<ul>
+<li><code>git add &lt;file1&gt; &lt;file2&gt; ...</code> to add file(s) to the stage.</li>
+<li><code>git add -p</code> to verify all modifications and add them to the stage.</li>
+<li><code>git commit -m "Message" -m "Description"</code> to commit with a message. The description is optional. </li>
+<li><code>git push</code> to push your commits.</li>
+<li><code>git commit --amend</code> to fix the previous commit.</li>
+<li><code>git push -f</code> to push a modified history (through amend or rebasing).</li>
+</ul>
+<p>If you need to fix an earlier commit than the current one, rebase.</p>
+<h2 id="going-between-branches">Going between branches</h2>
+<ul>
+<li><code>git checkout &lt;branch-name&gt;</code> to change branch</li>
+<li><code>git checkout -b &lt;branch-name&gt;</code> to create a branch and switch to it</li>
+<li><code>git branch -D &lt;branch-name&gt;</code> to delete a branch</li>
+</ul>
+<h2 id="rebasing">Rebasing</h2>
+<ul>
+<li><code>git pull --rebase origin main</code> to rebase to the main, or another branch. </li>
+<li><code>git rebase -i HEAD~&lt;number&gt;</code> to modify your history, reordering commits, merging them together, change their message, etc. Extremely powerful.</li>
+</ul>
+<h2 id="vim">Vim</h2>
+<p>Summoned by default when doing amends or rebases, very powerful but very weird to use at first.
+<br>For what matters to us, only a very few commands are necessary.</p>
+<ul>
+<li>Hit esc to go back to command mode</li>
+<li><code>i</code> to go edit mode</li>
+<li><code>:m+1</code> or <code>:m-2</code> to move a line (useful for reordering commit)</li>
+<li><code>:q!</code> to quit without saving</li>
+<li><code>:wq</code> to save and quit</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../git_remote_commands/" class="btn btn-neutral float-left" title="Git Remote Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../git/" class="btn btn-neutral float-left" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../git_history_commands/" class="btn btn-neutral float-right" title="Git History Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -170,7 +212,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../git_remote_commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../git/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../git_history_commands/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -40,21 +40,6 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Git</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git/">Git</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_local_commands/">Git Local Commands</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_remote_commands/">Git Remote Commands</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_branches/">Git Branches</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_history_commands/">Git History Commands</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_submodules/">Git Submodules</a>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">ASM</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Compiler & Linker</a>
@@ -101,6 +86,15 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../cpp/vtables/">vtables</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../cpp/type_casting/">Type Casting</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Git</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../git/git/">Git</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../git/quick_git_guide/">Quick Git Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../git/git_history_commands/">Git History Commands</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
@@ -180,16 +174,15 @@ The linker's job is to:
 </ul>
 <h2 id="static-library-or-dynamic-library">Static Library or Dynamic Library?</h2>
 <p>Libraries are meant to modularize and single out the responsibilities of different parts of the code.</p>
-<p>A <code>.lib</code> is bundled with the main code after linking, meaning it increases the size of the final binary, itis always loaded and has the same version as the main code. Still, a .lib can be reused in other projects without duplicating.</p>
-<p>A <code>.dll</code> remains its own separate file, loaded only when asked for, and with its own version. On the other hand, if the .dll file is absent, the binary cannot run.</p>
+<p>A <code>.lib</code> is bundled with the main code after linking, meaning it increases the size of the final binary, it is always loaded and has the same version as the main code. Still, a .lib can be reused in other projects without duplicating it in the src of each.</p>
+<p>A <code>.dll</code> remains its own separate file, loaded only when asked for, and with its own version. Many projects can use a single .dll at the same time.  On the other hand, it takes longer to load than a .lib, and if the .dll file is absent the binary cannot run.</p>
 <p>For Reverse Engineering, .dll is our friend.</p>
 <h2 id="reading-a-dll">Reading a DLL</h2>
-<p>In <code>x86 Native Tools Command Prompt for VS 2022</code> (or earlier version), call <code>dumpbin /EXPORTS path\to\your\library.dll</code>.</p>
+<p>In <code>x86 Native Tools Command Prompt for VS 2022</code> (or earlier version), run <code>dumpbin /EXPORTS path\to\your\library.dll</code>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../git/git_submodules/" class="btn btn-neutral float-left" title="Git Submodules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../registers/" class="btn btn-neutral float-right" title="Registers">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -212,8 +205,6 @@ The linker's job is to:
   <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
-    
-      <span><a href="../../git/git_submodules/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../registers/" style="color: #fcfcfc">Next &raquo;</a></span>
