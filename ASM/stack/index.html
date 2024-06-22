@@ -47,6 +47,12 @@
                   <li class="toctree-l1"><a class="reference internal" href="../registers/">Registers</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Stack</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#instructions-for-the-stack">Instructions for the stack</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stack-flow">Stack flow</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CheatEngine</span></p>
@@ -124,7 +130,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h2 id="stack">Stack</h2>
+<p>The stack is a temporary storage when registers are not enough to manipulate all the variables, computations and calls you need.</p>
+<p>To keep track of where we currently are in the stack, we use an Extended Stack Pointer: <strong>ESP</strong>.</p>
+<p><img alt="Alt text" src="../memory_stack.png" /></p>
+<p>When a function is called, it is contained in what we call a <strong>stack frame</strong>. We keep track of the beginning of the current stack frame with the Extended Base Pointer: <strong>EBP</strong>.</p>
+<h3 id="instructions-for-the-stack">Instructions for the stack</h3>
+<p>Loading from registers or from the stack</p>
+<pre><code class="language-asm">push eax   ; Push the value in eax onto the stack
+pop ebx    ; Pop the top value from the stack into ebx
+move eax, [ebx-4] ; Load a local variable from the stack into eax
+</code></pre>
+<p>Allocating stack space</p>
+<pre><code class="language-asm">sub esp, 0x10   ; Allocate 16 bytes of stack space
+add esp, 0x10   ; Deallocate 16 bytes of stack space
+</code></pre>
+<p>Clean stack frame
+Typically, ESP is modified before returning to point back.</p>
+<pre><code class="language-asm">mov esp,ebp
+pop ebp
+ret
+</code></pre>
+<p>Which is equivalent to:</p>
+<pre><code class="language-asm">leave
+ret
+</code></pre>
+<p>You may even meet this kind of operation which doesn't use EBP:</p>
+<pre><code class="language-asm">sub esp,0x108 ; Allocating 264bits of space
+...
+
+add esp,0x108
+ret
+</code></pre>
+<h3 id="stack-flow">Stack flow</h3>
+<p><br>Why so? Because when our current function returns, we want to go back to the state before we did all of our operations, with our result now saved in eax.</p>
               
             </div>
           </div><footer>
