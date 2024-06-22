@@ -2,127 +2,132 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://pc_volt.com/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://pc_volt.com/ASM/compiler_linker/</loc>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ASM/registers/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ASM/stack/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cheatengine/cheatengine/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/initializer_list/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/lambdas/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/pointers_references/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/smart_pointers/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/static/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/type_casting/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/cpp/vtables/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/else/create_symlink/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/calling_conventions/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/ghidra_setup/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/hierarchy/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/keybinds/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/naming_conventions/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/new_project/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/ghidra/search_for_strings/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git_branches/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git_history_commands/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git_local_commands/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git_remote_commands/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://pc_volt.com/git/git_submodules/</loc>
-         <lastmod>2023-08-06</lastmod>
+         <lastmod>2024-06-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

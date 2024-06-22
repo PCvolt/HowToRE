@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/cheatengine/cheatengine/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pc_volt.com/ASM/compiler_linker/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>CheatEngine - Reverse Engineering | PC_volt</title>
+    <title>Compiler & Linker - Reverse Engineering | PC_volt</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "CheatEngine";
-        var mkdocs_page_input_path = "cheatengine\\cheatengine.md";
-        var mkdocs_page_url = "/cheatengine/cheatengine/";
+        var mkdocs_page_name = "Compiler \u0026 Linker";
+        var mkdocs_page_input_path = "ASM\\compiler_linker.md";
+        var mkdocs_page_url = "/ASM/compiler_linker/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -56,17 +56,19 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">ASM</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/compiler_linker/">Compiler & Linker</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Compiler & Linker</a>
+    <ul class="current">
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/registers/">Registers</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../registers/">Registers</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/stack/">Stack</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../stack/">Stack</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CheatEngine</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">CheatEngine</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cheatengine/cheatengine/">CheatEngine</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Ghidra</span></p>
@@ -120,8 +122,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>CheatEngine &raquo;</li>
-      <li>CheatEngine</li>
+          <li>ASM &raquo;</li>
+      <li>Compiler & Linker</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -130,13 +132,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h2 id="what-is-a-binary">What is a binary</h2>
+<p>A binary is a file which data is purely intended to be read by the machine (0 and 1, beep boop).
+It can be many things and usually have an extension name so that the user knows which programs can reinterpret it this data (e.g a .psd is meant to be read by Photoshop).</p>
+<p>It is mostly used to speak of .exe files in the programming world. By extension the <code>\bin</code> folder is where the output .exe is stored.</p>
+<h2 id="compilers-and-assemblers">Compilers (and Assemblers)</h2>
+<p>A compiler is a program that translates the source code (C, C++, Java, Python, etc.) into machine code (binary) to be executed by the CPU.</p>
+<p>There are many compilers out there:
+- GCC: Linux, Windows (through MinGW or Cygwin), MacOS
+- Clang: Linux, Windows, MacOS
+- MSVC: Windows / C and C++ only
+- ICC: Linux, Windows, MacOS
+- A lot of other ones, but usually the aforementioned ones are the only ones you will realistically meet</p>
+<p>What makes those compilers different from each other?
+- Supported languages and standards (MSVC only supports C and C++)
+- Different optimizations (ICC optimized for Intel)
+- Error reports and diagnostics (GCC I'm looking at you)
+- Toolchain and Ecosystem (MSVC )
+- Performance</p>
+<p>An assembler is just like a compiler, but for ASM!
+Some assemblers to know of:
+- GNU Assembler (GAS)
+- NASM (Netwide Assembler)
+- MASM (Microsoft Macro Assembler)</p>
+<p>Both compilers and assemblers can produce object files (<code>.o</code> for Linux, or <code>.obj</code> for Windows)</p>
+<p>If there is only a single file with no dependencies whatsoever, they can produce an executable.
+They however cannot directly produce libraries at all.</p>
+<p>In the context of Reverse Engineering, a decompiler/disassembler is a program that takes whatever result a compiler/assembler produced, and tries to write the source code in C/C++ or in ASM.</p>
+<h2 id="linkers">Linkers</h2>
+<p>Since the compiler creates a <code>.o</code>/<code>.obj</code> for each .cpp file you write, you end up with many object files.
+The linker's job is to:
+- combine all of these object files into a final output
+- resolve symbols, meaning all function and variable calls are correctly made across all files
+- binding addresses properly when loading libraries in memory</p>
+<p>The final output can be:
+- executables: <code></code> (Linux) or <code>.exe</code> (Windows)
+- debug symbols: <code>.debug</code> or others (Linux) or <code>.pdb</code> (Windows)
+- archive / static libraries: <code>.a</code> (Linux) or <code>.lib</code> (Windows)
+- shared object / dynamic libraries: <code>.so</code> (Linux) <code>.dll</code> (Windows)</p>
+<h2 id="static-library-or-dynamic-library">Static Library or Dynamic Library?</h2>
+<p>Libraries are meant to modularize and single out the responsibilities of different parts of the code.</p>
+<p>A <code>.lib</code> is bundled with the main code after linking, meaning it increases the size of the final binary, itis always loaded and has the same version as the main code. Still, a .lib can be reused in other projects without duplicating.</p>
+<p>A <code>.dll</code> remains its own separate file, loaded only when asked for, and with its own version. On the other hand, if the .dll file is absent, the binary cannot run.</p>
+<p>For Reverse Engineering, .dll are our friend.</p>
+<h2 id="reading-a-dll">Reading a DLL</h2>
+<p>In <code>x86 Native Tools Command Prompt for VS 2022</code> (or earlier version), call <code>dumpbin /EXPORTS path\to\your\library.dll</code>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../ASM/stack/" class="btn btn-neutral float-left" title="Stack"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../ghidra/ghidra_setup/" class="btn btn-neutral float-right" title="Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../git/git_submodules/" class="btn btn-neutral float-left" title="Git Submodules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../registers/" class="btn btn-neutral float-right" title="Registers">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -159,10 +205,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../ASM/stack/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../git/git_submodules/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../ghidra/ghidra_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../registers/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

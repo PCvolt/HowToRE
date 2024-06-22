@@ -61,6 +61,15 @@
                   <li class="toctree-l1"><a class="reference internal" href="../git_submodules/">Git Submodules</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">ASM</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/compiler_linker/">Compiler & Linker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/registers/">Registers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/stack/">Stack</a>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">CheatEngine</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../cheatengine/cheatengine/">CheatEngine</a>
@@ -98,13 +107,6 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../cpp/type_casting/">Type Casting</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">ASM</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/registers/">Registers</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ASM/stack/">Stack</a>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">Else</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../else/create_symlink/">Create a Symbolic Link</a>
@@ -137,7 +139,8 @@
                 <h2 id="git-local-commands">Git Local Commands</h2>
 <p>Rundown of the most common git commands.</p>
 <h3 id="git-add">Git Add</h3>
-<p>Git add allows to include the selected files or lines of code to be </p>
+<p><code>git add &lt;file1 file2 ...&gt;</code>
+<br>Stages the indicated files. Useful if you want to specifically stage a few files, otherwise, use the next command.</p>
 <p><code>git add --all</code> or <code>git add -A</code>
 <br>The git add command by default!
 <br>It stages the entire repository, be it new files, modifications and deletions.</p>
@@ -154,10 +157,14 @@
 <li><code>?</code>: help
 As you can see, this is the most complex but most useful for keeping a clean history, free of commented-out portion of codes.</li>
 </ul>
+<hr />
+<h3 id="git-commit">Git Commit</h3>
+<p><code>git commit -m &lt;msg&gt;</code>
+<br>The standard git commit. Use this.</p>
+<p><code>git commit --amend</code>
+<br>When you did a little mistake on the content or the commit message, and don't want to make a fully dedicated commit to fixing it.
+You then just edit the latest commit with this.</p>
 <details><summary>Other commands</summary>
-
-``git add <file1 file2>``
-<br>Stages the indicated files. Maybe the command you've seen first, but not really useful since you will be most of the time staging a lot of files. Plus, writing all the filenames is pretty long.
 
 ``git add .`` (``.`` stands for the current directory)
 <br>This command works like ``git add --all`` but:
@@ -171,16 +178,6 @@ As you can see, this is the most complex but most useful for keeping a clean his
 
 ``git add -i`` (``-i`` stands for interactive)
 <br>This command provides an interface to perform diverse tasks like status, update, revert, add, patch or diff. Maybe the most interesting but complex command here.
-</details>
-
-<hr />
-<h3 id="git-commit">Git Commit</h3>
-<p><code>git commit -m &lt;msg&gt;</code>
-<br>The standard git commit. Use this.</p>
-<p><code>git commit --amend</code>
-<br>When you did a little mistake on the content or the commit message, and don't want to make a fully dedicated commit to fixing it.
-You then just edit the latest commit with this.</p>
-<details><summary>Other commands</summary>
 
 ``git commit -p``
 <br>Works just like git add -p, but for commits.
