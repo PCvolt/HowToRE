@@ -138,23 +138,29 @@ It can be many things and usually have an extension name so that the user knows 
 <p>It is mostly used to speak of .exe files in the programming world. By extension the <code>\bin</code> folder is where the output .exe is stored.</p>
 <h2 id="compilers-and-assemblers">Compilers (and Assemblers)</h2>
 <p>A compiler is a program that translates the source code (C, C++, Java, Python, etc.) into machine code (binary) to be executed by the CPU.</p>
-<p>There are many compilers out there:
-- GCC: Linux, Windows (through MinGW or Cygwin), MacOS
-- Clang: Linux, Windows, MacOS
-- MSVC: Windows / C and C++ only
-- ICC: Linux, Windows, MacOS
-- A lot of other ones, but usually the aforementioned ones are the only ones you will realistically meet</p>
-<p>What makes those compilers different from each other?
-- Supported languages and standards (MSVC only supports C and C++)
-- Different optimizations (ICC optimized for Intel)
-- Error reports and diagnostics (GCC I'm looking at you)
-- Toolchain and Ecosystem (MSVC )
-- Performance</p>
+<p>There are many compilers out there:</p>
+<ul>
+<li>GCC: Linux, Windows (through MinGW or Cygwin), MacOS</li>
+<li>Clang: Linux, Windows, MacOS</li>
+<li>MSVC: Windows / C and C++ only</li>
+<li>ICC: Linux, Windows, MacOS</li>
+<li>A lot of other ones, but usually the aforementioned ones are the only ones you will realistically meet</li>
+</ul>
+<p>What makes those compilers different from each other?</p>
+<ul>
+<li>Supported languages and standards (MSVC only supports C and C++)</li>
+<li>Different optimizations (ICC optimized for Intel)</li>
+<li>Error reports and diagnostics (GCC I'm looking at you)</li>
+<li>Toolchain and Ecosystem (MSVC )</li>
+<li>Performance</li>
+</ul>
 <p>An assembler is just like a compiler, but for ASM!
-Some assemblers to know of:
-- GNU Assembler (GAS)
-- NASM (Netwide Assembler)
-- MASM (Microsoft Macro Assembler)</p>
+Some assemblers to know of:</p>
+<ul>
+<li>GNU Assembler (GAS)</li>
+<li>NASM (Netwide Assembler)</li>
+<li>MASM (Microsoft Macro Assembler)</li>
+</ul>
 <p>Both compilers and assemblers can produce object files (<code>.o</code> for Linux, or <code>.obj</code> for Windows)</p>
 <p>If there is only a single file with no dependencies whatsoever, they can produce an executable.
 They however cannot directly produce libraries at all.</p>
@@ -165,16 +171,18 @@ The linker's job is to:
 - combine all of these object files into a final output
 - resolve symbols, meaning all function and variable calls are correctly made across all files
 - binding addresses properly when loading libraries in memory</p>
-<p>The final output can be:
-- executables: <code></code> (Linux) or <code>.exe</code> (Windows)
-- debug symbols: <code>.debug</code> or others (Linux) or <code>.pdb</code> (Windows)
-- archive / static libraries: <code>.a</code> (Linux) or <code>.lib</code> (Windows)
-- shared object / dynamic libraries: <code>.so</code> (Linux) <code>.dll</code> (Windows)</p>
+<p>The final output can be:</p>
+<ul>
+<li>executables: <code></code> (Linux) or <code>.exe</code> (Windows)</li>
+<li>debug symbols: <code>.debug</code> or others (Linux) or <code>.pdb</code> (Windows)</li>
+<li>archive / static libraries: <code>.a</code> (Linux) or <code>.lib</code> (Windows)</li>
+<li>shared object / dynamic libraries: <code>.so</code> (Linux) <code>.dll</code> (Windows)</li>
+</ul>
 <h2 id="static-library-or-dynamic-library">Static Library or Dynamic Library?</h2>
 <p>Libraries are meant to modularize and single out the responsibilities of different parts of the code.</p>
 <p>A <code>.lib</code> is bundled with the main code after linking, meaning it increases the size of the final binary, itis always loaded and has the same version as the main code. Still, a .lib can be reused in other projects without duplicating.</p>
 <p>A <code>.dll</code> remains its own separate file, loaded only when asked for, and with its own version. On the other hand, if the .dll file is absent, the binary cannot run.</p>
-<p>For Reverse Engineering, .dll are our friend.</p>
+<p>For Reverse Engineering, .dll is our friend.</p>
 <h2 id="reading-a-dll">Reading a DLL</h2>
 <p>In <code>x86 Native Tools Command Prompt for VS 2022</code> (or earlier version), call <code>dumpbin /EXPORTS path\to\your\library.dll</code>.</p>
               
